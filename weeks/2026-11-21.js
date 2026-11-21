@@ -1,4 +1,5 @@
 /* Week of 2026-11-21. Same-day revision after the 2-car garage rule and open-house column were added Nov 21.
+   Open-house times were later corrected from Zillow's visible Open houses section (not __NEXT_DATA__).
    Leave an unknown field as "". The page shows n/a.
 */
 window.HOUSE_WEEKS = window.HOUSE_WEEKS || {};
@@ -6,7 +7,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
   "title": "House Search Digest — Nov 21, 2026",
   "weekLabel": "Saturday, Nov 21, 2026",
   "lede": "Single-family homes for sale in the South Bay, Westside, Long Beach, and San Pedro.",
-  "prepared": "Prepared Saturday morning, Nov 21, 2026 (8:20–9:30 AM Pacific), then updated later that morning after a new bed/bath rule, a Zillow 2-bath pass, and a clarification that an attached in-law suite with its own entrance counts. Later the same day every qualifying home was rescored and the Top 5 was expanded to a Top 10. Still later that day a 2-car garage rule was added as a dealbreaker and this weekend’s Zillow open houses were recorded. Factor scores were left unchanged; five homes dropped out, and the Top 10 was re-ranked.",
+  "prepared": "Prepared Saturday morning, Nov 21, 2026 (8:20–9:30 AM Pacific), then updated later that morning after a new bed/bath rule, a Zillow 2-bath pass, and a clarification that an attached in-law suite with its own entrance counts. Later the same day every qualifying home was rescored and the Top 5 was expanded to a Top 10. Still later that day a 2-car garage rule was added as a dealbreaker and this weekend’s Zillow open houses were recorded. Factor scores were left unchanged; five homes dropped out, and the Top 10 was re-ranked. Those open-house times were later corrected from Zillow’s visible Open houses section (zillow-openhouses-recheck-2026-11-21.jsonl); the earlier __NEXT_DATA__ values were wrong.",
   "criteriaSummary": "Detached house with a front and back yard; 3+ bedrooms and 3+ full baths, or 3+ bedrooms and 2+ baths when a real ADU or in-law suite qualifies; list price ≤ $1,500,000; off-peak drive ≤ 30 min to Hawthorne Civic Center; assigned elementary 7+ on GreatSchools; interior relatively updated; at least a 2-car garage (rule added Nov 21).",
   "criteria": [
     "Detached single-family home with a front and back yard. No townhouses, condos, PUDs or attached homes, two-on-a-lot, duplexes, or triplexes.",
@@ -25,9 +26,9 @@ window.HOUSE_WEEKS["2026-11-21"] = {
     "Commute score starts at 10 for an off-peak drive of 12 minutes or less, then subtracts 0.22 per extra off-peak minute and 0.12 per minute that the midpoint of the rush estimate is past 30. School score is the GreatSchools rating (7 = 7.0 through 10 = 10.0), or the qualifying magnet rating (Lomita MST 7 or 7th Street Arts Magnet 9).",
     "Space penalties already applied: busy Western Ave −0.8, the fence that splits the Daggett yard −0.3, and the unverified hillside yard at 1524 W 5th St −0.25. An unverified lot scored as a neutral 0 on the lot component. Palo Verde’s lot was not verified. Living area for ADU homes is main plus documented ADU: Daggett 1,832 + 423 = 2,255; El Progreso 1,809 + 499 = 2,308. Western is scored on the listed 1,635 sf plus the qualifying-suite bonus, without an invented extra square footage. 2001 Carfax Ave is the high-interior benchmark. 6320 W 85th St scores lower for a compact kitchen with no island. Near-misses were not scored.",
     "After the weighted sum, a home in a gated HOA loses 0.75 points. That is a significant detractor, not a dealbreaker. It applies only to 635 Edith Way and 4000 Marion Way, both in Crown Pointe ($275/mo). 6320 W 85th St has a small non-gated neighborhood HOA (Kentwood Guardians, about $23/year) and is not penalized.",
-    "The 2-car garage rule was added Nov 21. It is a hard filter, not a scoring factor. Garage counts and this weekend’s open houses come from Zillow, recorded in zillow-oh-garage-2026-11-21.jsonl. Factor scores and totals were not changed."
+    "The 2-car garage rule was added Nov 21. It is a hard filter, not a scoring factor. Garage counts come from Zillow, recorded in zillow-oh-garage-2026-11-21.jsonl. This weekend’s open houses were later recaptured from the visible Open houses section on each Zillow listing (zillow-openhouses-recheck-2026-11-21.jsonl); earlier values taken from __NEXT_DATA__ were wrong. Factor scores and totals were not changed."
   ],
-  "rankingNote": "The 2-car garage rule was added Nov 21. It dropped 731 N Leland Ave (was #1 at 8.20; 1-car garage) out of the Top 10, so 6320 W 85th St is now #1. 2922 Radnor Ave (was #9 at 7.28) is also out: Zillow now shows it RECENTLY_SOLD at $895,000 with no garage. 1929 April Ct and 2102 Pattiz Ave moved in at #9 and #10. 3482 Iroquois Ave holds at #8 and has the only Top 10 open house this weekend (Sun 11/22 1-4pm). 211 N Western Ave ranks #7; busy Western Ave is still a red flag and is reflected in the space score. 6816 Cerritos Ave still does not pass: the attached unit would now count, but an official 7+ elementary could not be confirmed (Redfin lists Grant Elementary as assigned at 4/10). 4437 Keever Ave remains the highlighted near-miss pending an official school check.",
+  "rankingNote": "The 2-car garage rule was added Nov 21. It dropped 731 N Leland Ave (was #1 at 8.20; 1-car garage) out of the Top 10, so 6320 W 85th St is now #1. 2922 Radnor Ave (was #9 at 7.28) is also out: Zillow now shows it RECENTLY_SOLD at $895,000 with no garage. 1929 April Ct and 2102 Pattiz Ave moved in at #9 and #10. 3482 Iroquois Ave holds at #8. Six of the Top 10 have open houses this weekend: 85th St (Sun 11/22 2–4 PM), Carson (Sat 11/21 11 AM–4 PM · Sun 11/22 11 AM–4 PM), El Rey (Sat 11/21 2–4 PM · Sun 11/22 2–4 PM), Iroquois (Sun 11/22 1–4 PM), April Ct (Sat 11/21 2–4 PM · Sun 11/22 2–4 PM), and Pattiz (Sat 11/21 12–4 PM · Sun 11/22 12–4 PM). 211 N Western Ave ranks #7; busy Western Ave is still a red flag and is reflected in the space score. 6816 Cerritos Ave still does not pass: the attached unit would now count, but an official 7+ elementary could not be confirmed (Redfin lists Grant Elementary as assigned at 4/10). 4437 Keever Ave remains the highlighted near-miss pending an official school check.",
   "radnor": {
     "kicker": "Excluded",
     "heading": "2922 Radnor Ave is no longer qualifying",
@@ -73,7 +74,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Full reno: peninsula with barstool seating, kitchen open to the family room; all 3 baths, HVAC, roof, and windows redone. Modest 1,557 sf house (formerly #3). 5,163 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sun 11/22 12–3 PM"
     },
     {
       "rank": 12,
@@ -154,7 +155,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "“Reimagined” mid-century; leathered granite; outdoor kitchen; RV parking. Island not mentioned. 6,248 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sat 11/21 1–4 PM"
     },
     {
       "rank": 15,
@@ -265,7 +266,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
         "HOA"
       ],
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sat 11/21 12–4 PM"
     },
     {
       "rank": 19,
@@ -291,7 +292,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Fully remodeled; pool and spa; primary bedroom has its own exterior entrance; R-3 zoned. Island / open concept not confirmed. 6,351 sf lot (0.1458 acre). Tied with Marion on total; Peabody ranks higher on interior.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sun 11/22 12–4 PM"
     },
     {
       "rank": 20,
@@ -344,10 +345,10 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "space": "6.0",
       "commuteScore": "5.0",
       "schoolScore": "8",
-      "notes": "Shaker/quartz kitchen, AC, pool. Island not mentioned. Baths are 1 full + 2 ¾ (passes). 5,891 sf lot. Open houses Sat 11/21 1-4pm and Sun 11/22 2-4pm.",
+      "notes": "Shaker/quartz kitchen, AC, pool. Island not mentioned. Baths are 1 full + 2 ¾ (passes). 5,891 sf lot. Open houses Sat 11/21 1–4 PM · Sun 11/22 2–4 PM.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sat 11/21 1-4pm; Sun 11/22 2-4pm"
+      "openHouse": "Sat 11/21 1–4 PM · Sun 11/22 2–4 PM"
     },
     {
       "rank": 22,
@@ -373,7 +374,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Turnkey, hardwood, AC; only one bath noted as remodeled (moderately updated). Island / open concept not confirmed. 6,012 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sun 11/22 1–4 PM"
     }
   ],
   "newThisWeek": {
@@ -1474,7 +1475,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Now #1 after the 2-car garage rule dropped 731 N Leland Ave. Best school and the shortest commute. The remodeled quartz kitchen is compact, has no island, and is not open to the living room (confirmed in listing photos), so interior is scored clearly below the island / open-concept homes. It has a small non-gated neighborhood HOA (Kentwood Guardians, about $23/year), which is not penalized.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sun 11/22 2–4 PM"
     },
     {
       "rank": 2,
@@ -1516,7 +1517,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Beautifully remodeled 1925 single-story on a big lot, with one of the better Long Beach commutes. Official remarks say waterfall quartz but do not explicitly confirm an island.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sat 11/21 11 AM–4 PM · Sun 11/22 11 AM–4 PM"
     },
     {
       "rank": 4,
@@ -1585,7 +1586,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
         "Choices"
       ],
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sat 11/21 2–4 PM · Sun 11/22 2–4 PM"
     },
     {
       "rank": 7,
@@ -1627,10 +1628,10 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "7/10",
       "schoolNote": "",
       "commute": "27.0 min off-peak / 42–52 min rush",
-      "notes": "Strong space (3,012 sf, 5 beds) on a 2011 custom build with paid-off solar. Island and open concept were not confirmed, so interior is middling; school is the minimum 7, and the commute is among the longer ones. Confirm yard depth. Open house Sun 11/22 1-4pm, the only Top 10 open house this weekend.",
+      "notes": "Strong space (3,012 sf, 5 beds) on a 2011 custom build with paid-off solar. Island and open concept were not confirmed, so interior is middling; school is the minimum 7, and the commute is among the longer ones. Confirm yard depth. Open house Sun 11/22 1–4 PM.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sun 11/22 1-4pm"
+      "openHouse": "Sun 11/22 1–4 PM"
     },
     {
       "rank": 9,
@@ -1651,7 +1652,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Moved into the Top 10 after the 2-car garage rule. Updated (hardwood, granite), not brand-new; breakfast counter rather than an island; cul-de-sac, spa. The only qualifying home with a 3-car garage.",
       "hoaPenalty": "—",
       "garage": "3-car",
-      "openHouse": "none"
+      "openHouse": "Sat 11/21 2–4 PM · Sun 11/22 2–4 PM"
     },
     {
       "rank": 10,
@@ -1672,7 +1673,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "notes": "Moved into the Top 10 after the 2-car garage rule. Turnkey: large gathering island, granite/cherry kitchen; updated baths, vinyl floors, new roof and HVAC (2023).",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sat 11/21 12–4 PM · Sun 11/22 12–4 PM"
     }
   ],
   "excludedGarage": {
