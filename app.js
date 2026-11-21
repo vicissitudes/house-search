@@ -206,6 +206,54 @@
     return wrap;
   }
 
+  function homeCard(home, kind) {
+    const card = el("article", "home-card");
+    if (home.area) card.dataset.area = home.area;
+    const head = el("div", "home-card-head");
+    head.appendChild(el("span", "home-rank", String(home.rank)));
+    head.appendChild(el("span", "home-score", display(home.score)));
+    card.appendChild(head);
+    const title = el("h3", "home-address");
+    if (kind === "top") title.appendChild(addressCell([{ label: home.address, href: home.href }], home.badges));
+    else title.appendChild(addressCell(home.links, home.badges));
+    card.appendChild(title);
+    card.appendChild(el("p", "home-price", display(home.price)));
+    const bits = [];
+    if (home.bedsBaths) bits.push(home.bedsBaths);
+    if (kind === "top" && home.size) bits.push(home.size);
+    if (kind !== "top" && home.sqft) bits.push(home.sqft + " sf");
+    if (bits.length) card.appendChild(el("p", "home-meta", bits.join(" · ")));
+    if (home.garage != null) card.appendChild(el("p", "home-line", "Garage: " + home.garage));
+    if (home.openHouse != null) {
+      const scheduled = String(home.openHouse).trim().toLowerCase() !== "none";
+      card.appendChild(el("p", "home-open" + (scheduled ? " is-open" : ""), "Open house: " + home.openHouse));
+    }
+    if (kind === "top") {
+      const schoolBits = [home.school, home.rating, home.schoolNote].filter(Boolean);
+      if (schoolBits.length) card.appendChild(el("p", "home-line", schoolBits.join(" · ")));
+      if (home.commute) card.appendChild(el("p", "home-line", home.commute));
+    } else {
+      if (home.school) card.appendChild(el("p", "home-line", home.school));
+      const commuteBits = [];
+      if (home.offPeak) commuteBits.push(home.offPeak + " min off-peak");
+      if (home.rush) commuteBits.push(home.rush + " min rush");
+      if (commuteBits.length) card.appendChild(el("p", "home-line", commuteBits.join(" / ")));
+    }
+    if (home.adu && home.adu !== "—") card.appendChild(el("p", "home-line", "ADU: " + home.adu));
+    if (home.hoaPenalty && home.hoaPenalty !== "—") card.appendChild(el("p", "home-line", "HOA penalty: " + home.hoaPenalty));
+    const factors = el("div", "factor-row");
+    [["Int", home.interior], ["Space", home.space], ["Commute", home.commuteScore], ["School", home.schoolScore]].forEach(function (pair) {
+      if (pair[1] == null || String(pair[1]).trim() === "") return;
+      const chip = el("div", "factor-chip");
+      chip.appendChild(el("span", "factor-chip-label", pair[0]));
+      chip.appendChild(el("span", "factor-chip-value", String(pair[1])));
+      factors.appendChild(chip);
+    });
+    if (factors.childNodes.length) card.appendChild(factors);
+    if (home.notes) card.appendChild(el("p", "home-notes", home.notes));
+    return card;
+  }
+
   const topHasGarage = listHas(data.top10, "garage");
   const topHasOpen = listHas(data.top10, "openHouse");
   const topHeaders = ["#", "Address", "Price", "Beds / baths", "Total", "Interior", "Space", "Commute", "School", "HOA penalty"];
@@ -244,7 +292,11 @@
     }
   );
   topTable.table.classList.add("wide");
+  topTable.wrap.classList.add("wide-only");
   top.appendChild(topTable.wrap);
+  const topCards = el("div", "home-cards phone-only");
+  (data.top10 || []).forEach(function (home) { topCards.appendChild(homeCard(home, "top")); });
+  top.appendChild(topCards);
   top.appendChild(el("p", "note", data.rankingNote));
   wrap.appendChild(top);
 
@@ -324,6 +376,10 @@
       tr.appendChild(td);
       otherTable.tbody.appendChild(tr);
     }
+    otherCards.querySelectorAll(".home-card").forEach(function (card) {
+      card.hidden = area !== "All" && card.dataset.area !== area;
+    });
+    otherCardsEmpty.hidden = rows.length > 0;
     const noun = rows.length === 1 ? "home" : "homes";
     status.textContent = area === "All"
       ? "Showing all " + rows.length + " " + noun + "."
@@ -349,7 +405,14 @@
 
   other.appendChild(filterBar);
   other.appendChild(status);
+  otherTable.wrap.classList.add("wide-only");
   other.appendChild(otherTable.wrap);
+  const otherCards = el("div", "home-cards phone-only");
+  const otherCardsEmpty = el("p", "empty", "No homes in this area.");
+  otherCardsEmpty.hidden = true;
+  data.otherQualifying.forEach(function (home) { otherCards.appendChild(homeCard(home, "other")); });
+  otherCards.appendChild(otherCardsEmpty);
+  other.appendChild(otherCards);
   applyFilter("All");
   wrap.appendChild(other);
 
@@ -364,7 +427,7 @@
     excludedHeaders.push("Reason");
     const excluded = section("excluded-garage", block.heading || "Excluded");
     if (block.intro) excluded.appendChild(el("p", "intro", block.intro));
-    excluded.appendChild(table(
+    const excludedTable = table(
       block.heading || "Homes excluded by the garage rule.",
       excludedHeaders,
       homes,
@@ -378,7 +441,28 @@
         tr.appendChild(cell("Reason", home.reason));
         return tr;
       }
-    ).wrap);
+    );
+    excludedTable.wrap.classList.add("wide-only");
+    excluded.appendChild(excludedTable.wrap);
+    const excludedCards = el("div", "home-cards phone-only");
+    homes.forEach(function (home) {
+      const card = el("article", "home-card");
+      const head = el("div", "home-card-head");
+      head.appendChild(el("span", "home-score", display(home.score)));
+      card.appendChild(head);
+      const title = el("h3", "home-address");
+      title.appendChild(addressCell([{ label: home.address, href: home.href }]));
+      card.appendChild(title);
+      card.appendChild(el("p", "home-price", display(home.price)));
+      if (home.garage != null) card.appendChild(el("p", "home-line", "Garage: " + home.garage));
+      if (home.openHouse != null) {
+        const scheduled = String(home.openHouse).trim().toLowerCase() !== "none";
+        card.appendChild(el("p", "home-open" + (scheduled ? " is-open" : ""), "Open house: " + home.openHouse));
+      }
+      if (home.reason) card.appendChild(el("p", "home-notes", home.reason));
+      excludedCards.appendChild(card);
+    });
+    excluded.appendChild(excludedCards);
     wrap.appendChild(excluded);
   }
 
