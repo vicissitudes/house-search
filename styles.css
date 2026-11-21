@@ -106,9 +106,42 @@ h1 {
   font-size: 0.95rem;
 }
 
-.nav {
+.week-tabs {
   position: sticky;
   top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  margin: 0 0 0.2rem;
+  padding: 0.7rem 0 0.65rem;
+  background: rgba(243, 239, 230, 0.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.week-tab {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 0.4rem 0.95rem;
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.week-tab[aria-selected="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #f6f1e6;
+}
+
+.nav {
+  position: sticky;
+  top: 3.55rem;
   z-index: 4;
   background: rgba(243, 239, 230, 0.94);
   backdrop-filter: blur(8px);
@@ -133,7 +166,7 @@ h1 {
 
 .nav a:hover { text-decoration: underline; }
 
-.section, footer.criteria { margin: 2.6rem 0; scroll-margin-top: 3.4rem; }
+.section, footer.criteria { margin: 2.6rem 0; scroll-margin-top: 7rem; }
 
 .kicker {
   margin: 0 0 0.25rem;

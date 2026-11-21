@@ -1,12 +1,35 @@
 (function () {
-  const data = window.HOUSE_DIGEST;
   const app = document.getElementById("app");
+  const SECTIONS = {
+    "top-10": 1,
+    radnor: 1,
+    other: 1,
+    "new": 1,
+    changes: 1,
+    "near-misses": 1,
+    questions: 1,
+    caveat: 1,
+    criteria: 1
+  };
+  let currentId = "";
 
-  if (!data) {
-    app.textContent = "Digest data did not load.";
-    return;
+  function weekList() {
+    return (window.HOUSE_MANIFEST || []).filter(function (id) {
+      return window.HOUSE_WEEKS && window.HOUSE_WEEKS[id];
+    }).slice().sort().reverse();
   }
 
+  function parseHash() {
+    const raw = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+    if (!raw) return { id: "", section: "" };
+    const parts = raw.split("/");
+    if (SECTIONS[parts[0]] && !parts[1]) return { id: "", section: parts[0] };
+    return { id: parts[0], section: parts[1] || "" };
+  }
+
+  function renderDigest(data, weekId) {
+  const skip = document.querySelector(".skip");
+  if (skip) skip.setAttribute("href", "#" + weekId + "/top-10");
   document.title = data.title;
 
   function el(tag, className, text) {
@@ -110,6 +133,27 @@
   }
 
   const wrap = el("div", "wrap");
+  wrap.id = "digest";
+
+  const tabs = el("div", "week-tabs");
+  tabs.setAttribute("role", "tablist");
+  tabs.setAttribute("aria-label", "Digest weeks");
+  weekList().forEach(function (id) {
+    const week = window.HOUSE_WEEKS[id] || {};
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "week-tab";
+    btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-selected", id === weekId ? "true" : "false");
+    btn.setAttribute("aria-controls", "digest");
+    btn.id = "week-tab-" + id;
+    btn.textContent = week.weekLabel || id;
+    btn.addEventListener("click", function () {
+      if ((location.hash || "").replace(/^#/, "") !== id) location.hash = id;
+    });
+    tabs.appendChild(btn);
+  });
+  wrap.appendChild(tabs);
 
   const head = el("header", "masthead");
   const plate = el("div", "nameplate");
@@ -125,19 +169,19 @@
   nav.setAttribute("aria-label", "Sections");
   const navList = document.createElement("ul");
   [
-    ["#top-10", "Top 10"],
-    ["#radnor", "Radnor"],
-    ["#other", "Other homes"],
-    ["#new", "New"],
-    ["#changes", "Prices"],
-    ["#near-misses", "Near-misses"],
-    ["#questions", "Open questions"],
-    ["#caveat", "School caveat"],
-    ["#criteria", "Criteria"],
+    ["top-10", "Top 10"],
+    ["radnor", "Radnor"],
+    ["other", "Other homes"],
+    ["new", "New"],
+    ["changes", "Prices"],
+    ["near-misses", "Near-misses"],
+    ["questions", "Open questions"],
+    ["caveat", "School caveat"],
+    ["criteria", "Criteria"],
   ].forEach(function (item) {
     const li = document.createElement("li");
     const a = document.createElement("a");
-    a.href = item[0];
+    a.href = "#" + weekId + "/" + item[0];
     a.textContent = item[1];
     li.appendChild(a);
     navList.appendChild(li);
@@ -287,7 +331,7 @@
   applyFilter("All");
   wrap.appendChild(other);
 
-  const fresh = section("new", "New this week", "Since Nov 17");
+  const fresh = section("new", "New this week", "Compared with the prior week");
   fresh.appendChild(el("p", "intro", data.newThisWeek.intro));
   fresh.appendChild(table(
     "Listings new to Zillow this week, plus two Redfin-only adds.",
@@ -321,7 +365,7 @@
   ).wrap);
   wrap.appendChild(fresh);
 
-  const changes = section("changes", "Price changes and corrections", "Since Nov 17");
+  const changes = section("changes", "Price changes and corrections", "Compared with the prior week");
   changes.appendChild(el("h3", "", "Price drops"));
   changes.appendChild(table(
     "Price changes on homes that were already in last week’s digest.",
@@ -447,11 +491,38 @@
     details.appendChild(el("p", "muted", item));
   });
   foot.appendChild(details);
-  foot.appendChild(el("p", "colophon", "Personal digest for Nov 21, 2026. Listing pages change. Confirm status, schools, and yards before touring. This site does not use tracking or a build step."));
+  foot.appendChild(el("p", "colophon", "Personal digest for " + (data.weekLabel || weekId) + ". Listing pages change. Confirm status, schools, and yards before touring. This site does not use tracking or a build step. Older weeks stay on this page."));
   wrap.appendChild(foot);
 
   app.replaceChildren(wrap);
+  }
 
+  function showFromHash() {
+    const weeks = weekList();
+    if (!weeks.length) {
+      app.textContent = "No digests are listed.";
+      return;
+    }
+    const parsed = parseHash();
+    const id = weeks.indexOf(parsed.id) >= 0 ? parsed.id : weeks[0];
+    if (parsed.id !== id) {
+      history.replaceState(null, "", "#" + id + (parsed.section ? "/" + parsed.section : ""));
+    }
+    if (id !== currentId) {
+      currentId = id;
+      renderDigest(window.HOUSE_WEEKS[id], id);
+    }
+    if (parsed.section) {
+      const scroll = function () {
+        const node = document.getElementById(parsed.section);
+        if (node) node.scrollIntoView({ block: "start", behavior: "auto" });
+      };
+      requestAnimationFrame(scroll);
+      setTimeout(scroll, 50);
+    }
+  }
+
+  window.addEventListener("hashchange", showFromHash);
   window.addEventListener("beforeprint", function () {
     document.querySelectorAll("details").forEach(function (node) {
       node.dataset.wasOpen = String(node.open);
@@ -463,4 +534,5 @@
       node.open = node.dataset.wasOpen === "true";
     });
   });
+  showFromHash();
 })();
