@@ -195,6 +195,10 @@
     return el("span", marked ? "hoa-penalty" : "", text);
   }
 
+  function listHas(list, key) {
+    return (list || []).some(function (home) { return home[key] != null; });
+  }
+
   function factor(score, detail) {
     const wrap = document.createElement("div");
     wrap.appendChild(el("span", "factor", display(score)));
@@ -202,11 +206,18 @@
     return wrap;
   }
 
+  const topHasGarage = listHas(data.top10, "garage");
+  const topHasOpen = listHas(data.top10, "openHouse");
+  const topHeaders = ["#", "Address", "Price", "Beds / baths", "Total", "Interior", "Space", "Commute", "School", "HOA penalty"];
+  if (topHasGarage) topHeaders.push("Garage");
+  if (topHasOpen) topHeaders.push("Open house");
+  topHeaders.push("Notes");
+
   const top = section("top-10", "Top 10", "Scored");
   top.appendChild(el("p", "intro", data.weightsNote));
   const topTable = table(
     "Ten homes that clear every hard filter, ranked by the weighted total. Factor scores are 0–10.",
-    ["#", "Address", "Price", "Beds / baths", "Total", "Interior", "Space", "Commute", "School", "HOA penalty", "Notes"],
+    topHeaders,
     data.top10,
     function (home) {
       const tr = document.createElement("tr");
@@ -226,6 +237,8 @@
       tr.appendChild(cell("Commute", factor(home.commuteScore, home.commute), "num"));
       tr.appendChild(cell("School", factor(home.schoolScore, [home.school, home.rating, home.schoolNote].filter(Boolean).join(" · ")), "num"));
       tr.appendChild(cell("HOA penalty", hoaPenalty(home.hoaPenalty), "num"));
+      if (topHasGarage) tr.appendChild(cell("Garage", home.garage));
+      if (topHasOpen) tr.appendChild(cell("Open house", home.openHouse));
       tr.appendChild(cell("Notes", home.notes));
       return tr;
     }
@@ -261,9 +274,16 @@
   const status = el("p", "filter-status");
   status.setAttribute("aria-live", "polite");
 
+  const otherHasGarage = listHas(data.otherQualifying, "garage");
+  const otherHasOpen = listHas(data.otherQualifying, "openHouse");
+  const otherHeaders = ["#", "Address", "Price", "Bd/Ba", "Sq ft", "ADU", "Elementary (GS)", "Off-peak", "Rush est.", "HOA penalty", "Score"];
+  if (otherHasGarage) otherHeaders.push("Garage");
+  if (otherHasOpen) otherHeaders.push("Open house");
+  otherHeaders.push("Notes");
+
   const otherTable = table(
     "Homes that clear the hard filters and rank below the Top 10, sorted by the weighted total. Off-peak and rush figures are minutes.",
-    ["#", "Address", "Price", "Bd/Ba", "Sq ft", "ADU", "Elementary (GS)", "Off-peak", "Rush est.", "HOA penalty", "Score", "Notes"],
+    otherHeaders,
     data.otherQualifying,
     renderOtherRow
   );
@@ -285,6 +305,8 @@
     score.appendChild(el("span", "total", display(home.score)));
     score.appendChild(el("span", "factor-sub", "int " + home.interior + " · space " + home.space + " · commute " + home.commuteScore + " · school " + home.schoolScore));
     tr.appendChild(cell("Score", score, "num"));
+    if (otherHasGarage) tr.appendChild(cell("Garage", home.garage));
+    if (otherHasOpen) tr.appendChild(cell("Open house", home.openHouse));
     tr.appendChild(cell("Notes", home.notes));
     return tr;
   }
@@ -297,7 +319,7 @@
     if (!rows.length) {
       const tr = document.createElement("tr");
       const td = document.createElement("td");
-      td.colSpan = 12;
+      td.colSpan = otherHeaders.length;
       td.appendChild(el("p", "empty", "No homes in this area."));
       tr.appendChild(td);
       otherTable.tbody.appendChild(tr);
@@ -330,6 +352,35 @@
   other.appendChild(otherTable.wrap);
   applyFilter("All");
   wrap.appendChild(other);
+
+  if (data.excludedGarage) {
+    const block = data.excludedGarage;
+    const homes = block.homes || [];
+    const excludedHasGarage = listHas(homes, "garage");
+    const excludedHasOpen = listHas(homes, "openHouse");
+    const excludedHeaders = ["Address", "Price", "Score"];
+    if (excludedHasGarage) excludedHeaders.push("Garage");
+    if (excludedHasOpen) excludedHeaders.push("Open house");
+    excludedHeaders.push("Reason");
+    const excluded = section("excluded-garage", block.heading || "Excluded");
+    if (block.intro) excluded.appendChild(el("p", "intro", block.intro));
+    excluded.appendChild(table(
+      block.heading || "Homes excluded by the garage rule.",
+      excludedHeaders,
+      homes,
+      function (home) {
+        const tr = document.createElement("tr");
+        tr.appendChild(cell("Address", addressCell([{ label: home.address, href: home.href }])));
+        tr.appendChild(cell("Price", home.price, "num"));
+        tr.appendChild(cell("Score", home.score, "num"));
+        if (excludedHasGarage) tr.appendChild(cell("Garage", home.garage));
+        if (excludedHasOpen) tr.appendChild(cell("Open house", home.openHouse));
+        tr.appendChild(cell("Reason", home.reason));
+        return tr;
+      }
+    ).wrap);
+    wrap.appendChild(excluded);
+  }
 
   const fresh = section("new", "New this week", "Compared with the prior week");
   fresh.appendChild(el("p", "intro", data.newThisWeek.intro));
