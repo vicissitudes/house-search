@@ -1,5 +1,6 @@
 /* Week of 2026-11-21. Same-day revision after the 2-car garage rule and open-house column were added Nov 21.
    Open-house times were later corrected from Zillow's visible Open houses section (not __NEXT_DATA__).
+   Later still, kitchen was split out as its own 20% factor (interior 20%, space 25%, commute 20%, school 20%).
    Leave an unknown field as "". The page shows n/a.
 */
 window.HOUSE_WEEKS = window.HOUSE_WEEKS || {};
@@ -7,7 +8,7 @@ window.HOUSE_WEEKS["2026-11-21"] = {
   "title": "House Search Digest — Nov 21, 2026",
   "weekLabel": "Saturday, Nov 21, 2026",
   "lede": "Single-family homes for sale in the South Bay, Westside, Long Beach, and San Pedro.",
-  "prepared": "Prepared Saturday morning, Nov 21, 2026 (8:20–9:30 AM Pacific), then updated later that morning after a new bed/bath rule, a Zillow 2-bath pass, and a clarification that an attached in-law suite with its own entrance counts. Later the same day every qualifying home was rescored and the Top 5 was expanded to a Top 10. Still later that day a 2-car garage rule was added as a dealbreaker and this weekend’s Zillow open houses were recorded. Factor scores were left unchanged; five homes dropped out, and the Top 10 was re-ranked. Those open-house times were later corrected from Zillow’s visible Open houses section (zillow-openhouses-recheck-2026-11-21.jsonl); the earlier __NEXT_DATA__ values were wrong.",
+  "prepared": "Prepared Saturday morning, Nov 21, 2026 (8:20–9:30 AM Pacific), then updated later that morning after a new bed/bath rule, a Zillow 2-bath pass, and a clarification that an attached in-law suite with its own entrance counts. Later the same day every qualifying home was rescored and the Top 5 was expanded to a Top 10. Still later that day a 2-car garage rule was added as a dealbreaker and this weekend’s Zillow open houses were recorded. Factor scores were left unchanged; five homes dropped out, and the Top 10 was re-ranked. Those open-house times were later corrected from Zillow’s visible Open houses section (zillow-openhouses-recheck-2026-11-21.jsonl); the earlier __NEXT_DATA__ values were wrong. Later still on Saturday, Nov 21, kitchen was split out as its own 20% factor (interior is now 20% for everything else about how modern the home is; space, commute, and school stay 25/20/20). Space, commute, and school scores were left unchanged, totals were recomputed, and the Top 10 was re-ranked.",
   "criteriaSummary": "Detached house with a front and back yard; 3+ bedrooms and 3+ full baths, or 3+ bedrooms and 2+ baths when a real ADU or in-law suite qualifies; list price ≤ $1,500,000; off-peak drive ≤ 30 min to Hawthorne Civic Center; assigned elementary 7+ on GreatSchools; interior relatively updated; at least a 2-car garage (rule added Nov 21).",
   "criteria": [
     "Detached single-family home with a front and back yard. No townhouses, condos, PUDs or attached homes, two-on-a-lot, duplexes, or triplexes.",
@@ -26,9 +27,9 @@ window.HOUSE_WEEKS["2026-11-21"] = {
     "Commute score starts at 10 for an off-peak drive of 12 minutes or less, then subtracts 0.22 per extra off-peak minute and 0.12 per minute that the midpoint of the rush estimate is past 30. School score is the GreatSchools rating (7 = 7.0 through 10 = 10.0), or the qualifying magnet rating (Lomita MST 7 or 7th Street Arts Magnet 9).",
     "Space penalties already applied: busy Western Ave −0.8, the fence that splits the Daggett yard −0.3, and the unverified hillside yard at 1524 W 5th St −0.25. An unverified lot scored as a neutral 0 on the lot component. Palo Verde’s lot was not verified. Living area for ADU homes is main plus documented ADU: Daggett 1,832 + 423 = 2,255; El Progreso 1,809 + 499 = 2,308. Western is scored on the listed 1,635 sf plus the qualifying-suite bonus, without an invented extra square footage. 2001 Carfax Ave is the high-interior benchmark. 6320 W 85th St scores lower for a compact kitchen with no island. Near-misses were not scored.",
     "After the weighted sum, a home in a gated HOA loses 0.75 points. That is a significant detractor, not a dealbreaker. It applies only to 635 Edith Way and 4000 Marion Way, both in Crown Pointe ($275/mo). 6320 W 85th St has a small non-gated neighborhood HOA (Kentwood Guardians, about $23/year) and is not penalized.",
-    "The 2-car garage rule was added Nov 21. It is a hard filter, not a scoring factor. Garage counts come from Zillow, recorded in zillow-oh-garage-2026-11-21.jsonl. This weekend’s open houses were later recaptured from the visible Open houses section on each Zillow listing (zillow-openhouses-recheck-2026-11-21.jsonl); earlier values taken from __NEXT_DATA__ were wrong. Factor scores and totals were not changed."
+    "The 2-car garage rule was added Nov 21. It is a hard filter, not a scoring factor. Garage counts come from Zillow, recorded in zillow-oh-garage-2026-11-21.jsonl. This weekend’s open houses were later recaptured from the visible Open houses section on each Zillow listing (zillow-openhouses-recheck-2026-11-21.jsonl); earlier values taken from __NEXT_DATA__ were wrong. Factor scores and totals were not changed. Later on Nov 21, kitchen was split out as its own 20% factor (interior 20%, space 25%, commute 20%, school 20%). Space, commute, and school scores were kept; the old interior score was re-split so non-kitchen remodel quality is judged on its own. Kitchen scores came from listing photos and remarks already in hand, plus a fresh look at listing photos and MLS remarks where earlier notes did not say enough about the island or open layout."
   ],
-  "rankingNote": "The 2-car garage rule was added Nov 21. It dropped 731 N Leland Ave (was #1 at 8.20; 1-car garage) out of the Top 10, so 6320 W 85th St is now #1. 2922 Radnor Ave (was #9 at 7.28) is also out: Zillow now shows it RECENTLY_SOLD at $895,000 with no garage. 1929 April Ct and 2102 Pattiz Ave moved in at #9 and #10. 3482 Iroquois Ave holds at #8. Six of the Top 10 have open houses this weekend: 85th St (Sun 11/22 2–4 PM), Carson (Sat 11/21 11 AM–4 PM · Sun 11/22 11 AM–4 PM), El Rey (Sat 11/21 2–4 PM · Sun 11/22 2–4 PM), Iroquois (Sun 11/22 1–4 PM), April Ct (Sat 11/21 2–4 PM · Sun 11/22 2–4 PM), and Pattiz (Sat 11/21 12–4 PM · Sun 11/22 12–4 PM). 211 N Western Ave ranks #7; busy Western Ave is still a red flag and is reflected in the space score. 6816 Cerritos Ave still does not pass: the attached unit would now count, but an official 7+ elementary could not be confirmed (Redfin lists Grant Elementary as assigned at 4/10). 4437 Keever Ave remains the highlighted near-miss pending an official school check.",
+  "rankingNote": "The kitchen-weight change was added later Nov 21. Kitchen is now its own 20% factor, and interior covers only non-kitchen remodel quality. Space, commute, and school scores were left unchanged. 354 E Carson St is the new #1 (8.54) after photos confirmed a large waterfall-quartz island open to the living room. 2001 Carfax Ave holds at #2 with the perfect kitchen (10) but a longer commute. 6320 W 85th St drops from #1 to #8: its cramped galley with no island is now a 3.0 kitchen score, though Kentwood 10 and the 11.6-minute drive keep it in the Top 10. 5103 E Peabody St is the biggest mover, jumping from #19 to #10 after photos showed a large island fully open to the living room. 2102 Pattiz Ave slips just out of the Top 10 to #11. 211 N Western Ave rises to #5 on a 9.5 kitchen (oversized quartz island, fully open); busy Western Ave is still a red flag in the space score. This weekend's Top 10 open houses: Carson (Sat 11/21 11 AM–4 PM · Sun 11/22 11 AM–4 PM), El Rey (Sat 11/21 2–4 PM · Sun 11/22 2–4 PM), Iroquois (Sun 11/22 1–4 PM), 85th St (Sun 11/22 2–4 PM), April Ct (Sat 11/21 2–4 PM · Sun 11/22 2–4 PM), and Peabody (Sun 11/22 12–4 PM). 6816 Cerritos Ave still does not pass: the attached unit would now count, but an official 7+ elementary could not be confirmed (Redfin lists Grant Elementary as assigned at 4/10). 4437 Keever Ave remains the highlighted near-miss pending an official school check.",
   "radnor": {
     "kicker": "Excluded",
     "heading": "2922 Radnor Ave is no longer qualifying",
@@ -48,10 +49,37 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       }
     ]
   },
-  "otherIntro": "The 12 qualifying homes below the Top 10, sorted by the same weighted total. Scores are unchanged. ADU is “—” when the digest does not list one. HOA penalty is “—” when none applies, and −0.75 for a gated HOA. Garage is the Zillow garage_spaces count, shown as 2-car or 3-car. Open house is this weekend (Nov 21–22), or “none.” The line under each score is interior, space, commute, and school.",
+  "otherIntro": "The 12 qualifying homes below the Top 10, sorted by the same weighted total. Scores now include a kitchen factor (20%). ADU is “—” when the digest does not list one. HOA penalty is “—” when none applies, and −0.75 for a gated HOA. Garage is the Zillow garage_spaces count, shown as 2-car or 3-car. Open house is this weekend (Nov 21–22), or “none.” The line under each score is kitchen, interior, space, commute, and school.",
   "otherQualifying": [
     {
       "rank": 11,
+      "area": "Long Beach",
+      "links": [
+        {
+          "label": "2102 Pattiz Ave, LB 90815",
+          "href": "https://www.zillow.com/homedetails/2102-Pattiz-Ave-Long-Beach-CA-90815/21209086_zpid/"
+        }
+      ],
+      "price": "$1,224,888",
+      "bedsBaths": "4/3",
+      "sqft": "1,948",
+      "adu": "—",
+      "school": "Tincher 8",
+      "offPeak": "26.9",
+      "rush": "42–52",
+      "hoaPenalty": "—",
+      "garage": "2-car",
+      "openHouse": "Sat 11/21 12–4 PM · Sun 11/22 12–4 PM",
+      "score": "7.48",
+      "kitchen": "8.7",
+      "interior": "8.0",
+      "space": "6.4",
+      "commuteScore": "4.7",
+      "schoolScore": "8",
+      "notes": "Just outside the Top 10 after the kitchen-weight change. Large gathering island with seating; flows to dining and connects to living. Turnkey granite/cherry kitchen, updated baths, vinyl floors, new roof and HVAC (2023)."
+    },
+    {
+      "rank": 12,
       "area": "Long Beach",
       "links": [
         {
@@ -66,73 +94,19 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "school": "Los Cerritos 8",
       "offPeak": "22.7",
       "rush": "35–45",
-      "score": "7.00",
-      "interior": "8.4",
+      "score": "7.32",
+      "interior": "8.8",
       "space": "4.7",
       "commuteScore": "6.4",
       "schoolScore": "8",
-      "notes": "Full reno: peninsula with barstool seating, kitchen open to the family room; all 3 baths, HVAC, roof, and windows redone. Modest 1,557 sf house (formerly #3). 5,163 sf lot.",
+      "notes": "Peninsula with barstool seating, kitchen fully open to the family room; all 3 baths, HVAC, roof, and windows redone. Modest 1,557 sf house (formerly #3). 5,163 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sun 11/22 12–3 PM"
-    },
-    {
-      "rank": 12,
-      "area": "Long Beach",
-      "links": [
-        {
-          "label": "6702 E El Progreso St, LB 90815",
-          "href": "https://www.zillow.com/homedetails/6702-E-El-Progreso-St-Long-Beach-CA-90815/21207782_zpid/"
-        }
-      ],
-      "price": "$1,495,000",
-      "bedsBaths": "main 3/2 + ADU",
-      "sqft": "1,809 listed (ADU 499)",
-      "adu": "Attached 499 sf 1/1 (built 9/2024; own address, entrance, full kitchen, bath, laundry)",
-      "school": "Emerson Parkside 8",
-      "offPeak": "25.7",
-      "rush": "41–51",
-      "score": "6.99",
-      "interior": "6.7",
-      "space": "8.1",
-      "commuteScore": "5.1",
-      "schoolScore": "8",
-      "notes": "Main house remodeled (kitchen, both baths, new HVAC, new LVP) but a galley kitchen with no island. 7,215 sf corner lot. At the price cap. NEW under the ADU rule.",
-      "badges": [
-        "ADU rule"
-      ],
-      "hoaPenalty": "—",
-      "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "Sun 11/22 12–3 PM",
+      "kitchen": "7.5"
     },
     {
       "rank": 13,
-      "area": "Long Beach",
-      "links": [
-        {
-          "label": "2916 Charlemagne Ave, LB 90815",
-          "href": "https://www.zillow.com/homedetails/2916-Charlemagne-Ave-Long-Beach-CA-90815/21201754_zpid/"
-        }
-      ],
-      "price": "$1,247,000",
-      "bedsBaths": "3/3",
-      "sqft": "2,148",
-      "adu": "—",
-      "school": "Carver 8",
-      "offPeak": "24.9",
-      "rush": "40–50",
-      "score": "6.96",
-      "interior": "7.1",
-      "space": "7.2",
-      "commuteScore": "5.4",
-      "schoolScore": "8",
-      "notes": "“Beautifully updated”; steam shower; $200k pool/putting-green backyard (2021); paid-off solar. Island / open concept not confirmed. 6,112 sf lot.",
-      "hoaPenalty": "—",
-      "garage": "2-car",
-      "openHouse": "none"
-    },
-    {
-      "rank": 14,
       "area": "Long Beach",
       "links": [
         {
@@ -147,44 +121,19 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "school": "Bixby 8",
       "offPeak": "24.6",
       "rush": "40–50",
-      "score": "6.94",
-      "interior": "7.3",
+      "score": "7.14",
+      "interior": "7.6",
       "space": "6.8",
       "commuteScore": "5.4",
       "schoolScore": "8",
-      "notes": "“Reimagined” mid-century; leathered granite; outdoor kitchen; RV parking. Island not mentioned. 6,248 sf lot.",
+      "notes": "No island; kitchen connects to the open living/dining. Reimagined mid-century; leathered granite; outdoor kitchen; RV parking. 6,248 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sat 11/21 1–4 PM"
+      "openHouse": "Sat 11/21 1–4 PM",
+      "kitchen": "6.2"
     },
     {
-      "rank": 15,
-      "area": "Long Beach",
-      "links": [
-        {
-          "label": "2271 Mira Mar Ave, LB 90815",
-          "href": "https://www.zillow.com/homedetails/2271-Mira-Mar-Ave-Long-Beach-CA-90815/21200286_zpid/"
-        }
-      ],
-      "price": "$1,299,000",
-      "bedsBaths": "3/3",
-      "sqft": "1,809",
-      "adu": "—",
-      "school": "Bixby 8",
-      "offPeak": "24.4",
-      "rush": "39–49",
-      "score": "6.93",
-      "interior": "8.1",
-      "space": "5.5",
-      "commuteScore": "5.6",
-      "schoolScore": "8",
-      "notes": "“Exceptionally remodeled” designer quartz kitchen, permitted baths, new windows and AC, deck and pergola. Island and open concept not confirmed in remarks (formerly #5).",
-      "hoaPenalty": "—",
-      "garage": "2-car",
-      "openHouse": "none"
-    },
-    {
-      "rank": 16,
+      "rank": 14,
       "area": "Long Beach",
       "links": [
         {
@@ -199,103 +148,19 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "school": "Tincher 8",
       "offPeak": "25.5",
       "rush": "40–50",
-      "score": "6.83",
-      "interior": "7.4",
+      "score": "7.04",
+      "interior": "7.2",
       "space": "6.4",
       "commuteScore": "5.2",
       "schoolScore": "8",
-      "notes": "Vaulted beams, kitchen opens to the great room (no island mentioned), bamboo floors, low-E windows, AC; pool; front lawn.",
+      "notes": "Kitchen opens to the vaulted great room; no island, breakfast counter. Vaulted beams, bamboo floors, low-E windows, AC; pool; front lawn. Kitchen photos were thin.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "none",
+      "kitchen": "6.8"
     },
     {
-      "rank": 17,
-      "area": "San Pedro",
-      "links": [
-        {
-          "label": "1524 W 5th St, San Pedro 90732",
-          "href": "https://www.zillow.com/homedetails/1524-W-5th-St-San-Pedro-CA-90732/21351518_zpid/"
-        }
-      ],
-      "price": "$1,250,000",
-      "bedsBaths": "3/3",
-      "sqft": "2,376",
-      "adu": "—",
-      "school": "No assigned ES returned; guaranteed 7th Street Arts Magnet 9 (Choices application)",
-      "offPeak": "24.4",
-      "rush": "39–49",
-      "score": "6.82",
-      "interior": "5.5",
-      "space": "7.9",
-      "commuteScore": "5.6",
-      "schoolScore": "9",
-      "notes": "NEW (1 day). 3 full baths, no common walls, 7,096 sf hillside lot, ocean view, central AC, vinyl floors. Yard layout and finish level not verified; interior scored as middling 5.5.",
-      "badges": [
-        "New",
-        "Choices"
-      ],
-      "hoaPenalty": "—",
-      "garage": "2-car",
-      "openHouse": "none"
-    },
-    {
-      "rank": 18,
-      "area": "Long Beach",
-      "links": [
-        {
-          "label": "635 Edith Way, LB 90807",
-          "href": "https://www.zillow.com/homedetails/635-Edith-Way-Long-Beach-CA-90807/21161838_zpid/"
-        }
-      ],
-      "price": "$1,199,999 (↓ $20,001)",
-      "bedsBaths": "3/3",
-      "sqft": "2,478",
-      "adu": "—",
-      "school": "Los Cerritos 8",
-      "offPeak": "22.0",
-      "rush": "35–45",
-      "score": "6.79",
-      "interior": "7.0",
-      "space": "8.7",
-      "commuteScore": "6.6",
-      "schoolScore": "8",
-      "notes": "Remodeled kitchen and primary bath; island / open concept not confirmed. Strong space (2,478 sf, pool, 6,514 sf lot). Gated Crown Pointe HOA ($275/mo); −0.75 penalty applied (was 7.54, former #6).",
-      "hoaPenalty": "−0.75",
-      "badges": [
-        "HOA"
-      ],
-      "garage": "2-car",
-      "openHouse": "Sat 11/21 12–4 PM"
-    },
-    {
-      "rank": 19,
-      "area": "Long Beach",
-      "links": [
-        {
-          "label": "5103 E Peabody St, LB 90808",
-          "href": "https://www.zillow.com/homedetails/5103-E-Peabody-St-Long-Beach-CA-90808/465670604_zpid/"
-        }
-      ],
-      "price": "$1,198,000",
-      "bedsBaths": "4/3",
-      "sqft": "1,535",
-      "adu": "—",
-      "school": "Carver 8",
-      "offPeak": "24.8",
-      "rush": "40–50",
-      "score": "6.57",
-      "interior": "7.2",
-      "space": "5.5",
-      "commuteScore": "5.4",
-      "schoolScore": "8",
-      "notes": "Fully remodeled; pool and spa; primary bedroom has its own exterior entrance; R-3 zoned. Island / open concept not confirmed. 6,351 sf lot (0.1458 acre). Tied with Marion on total; Peabody ranks higher on interior.",
-      "hoaPenalty": "—",
-      "garage": "2-car",
-      "openHouse": "Sun 11/22 12–4 PM"
-    },
-    {
-      "rank": 20,
+      "rank": 15,
       "area": "Long Beach",
       "links": [
         {
@@ -310,19 +175,165 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "school": "Los Cerritos 8",
       "offPeak": "22.3",
       "rush": "35–45",
-      "score": "6.57",
+      "score": "6.93",
       "interior": "6.7",
       "space": "8.3",
       "commuteScore": "6.5",
       "schoolScore": "8",
-      "notes": "Newer appliances and floors (not a documented gut remodel); island / open concept not confirmed. Strong space (2,491 sf, pool, 5,914 sf lot). Same gated Crown Pointe HOA as Edith ($275/mo); −0.75 penalty applied (was 7.32, former #10). Off Zillow, Active on CRMLS (Nov 21).",
+      "notes": "Expansive open-floor-plan kitchen with a breakfast area; island not confirmed (photos not retrieved). Strong space (2,491 sf, pool, 5,914 sf lot). Same gated Crown Pointe HOA as Edith ($275/mo); −0.75 penalty applied. Off Zillow, Active on CRMLS (Nov 21).",
       "hoaPenalty": "−0.75",
       "badges": [
         "HOA",
         "Status"
       ],
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "none",
+      "kitchen": "6.8"
+    },
+    {
+      "rank": 16,
+      "area": "Long Beach",
+      "links": [
+        {
+          "label": "6702 E El Progreso St, LB 90815",
+          "href": "https://www.zillow.com/homedetails/6702-E-El-Progreso-St-Long-Beach-CA-90815/21207782_zpid/"
+        }
+      ],
+      "price": "$1,495,000",
+      "bedsBaths": "main 3/2 + ADU",
+      "sqft": "1,809 listed (ADU 499)",
+      "adu": "Attached 499 sf 1/1 (built 9/2024; own address, entrance, full kitchen, bath, laundry)",
+      "school": "Emerson Parkside 8",
+      "offPeak": "25.7",
+      "rush": "41–51",
+      "score": "6.91",
+      "interior": "7.8",
+      "space": "8.1",
+      "commuteScore": "5.1",
+      "schoolScore": "8",
+      "notes": "Remodeled galley, no island. Main house remodeled (kitchen, both baths, new HVAC, new LVP). 7,215 sf corner lot. At the price cap. NEW under the ADU rule.",
+      "badges": [
+        "ADU rule"
+      ],
+      "hoaPenalty": "—",
+      "garage": "2-car",
+      "openHouse": "none",
+      "kitchen": "3.5"
+    },
+    {
+      "rank": 17,
+      "area": "Long Beach",
+      "links": [
+        {
+          "label": "2271 Mira Mar Ave, LB 90815",
+          "href": "https://www.zillow.com/homedetails/2271-Mira-Mar-Ave-Long-Beach-CA-90815/21200286_zpid/"
+        }
+      ],
+      "price": "$1,299,000",
+      "bedsBaths": "3/3",
+      "sqft": "1,809",
+      "adu": "—",
+      "school": "Bixby 8",
+      "offPeak": "24.4",
+      "rush": "39–49",
+      "score": "6.90",
+      "interior": "8.5",
+      "space": "5.5",
+      "commuteScore": "5.6",
+      "schoolScore": "8",
+      "notes": "Designer remodeled quartz kitchen with a wet bar; island and a fully open kitchen/living layout were not confirmed, and listing photos could not be retrieved beyond the hero image, so the kitchen score is middling. New windows and AC, deck and pergola. Formerly #5.",
+      "hoaPenalty": "—",
+      "garage": "2-car",
+      "openHouse": "none",
+      "kitchen": "5.5"
+    },
+    {
+      "rank": 18,
+      "area": "San Pedro",
+      "links": [
+        {
+          "label": "1524 W 5th St, San Pedro 90732",
+          "href": "https://www.zillow.com/homedetails/1524-W-5th-St-San-Pedro-CA-90732/21351518_zpid/"
+        }
+      ],
+      "price": "$1,250,000",
+      "bedsBaths": "3/3",
+      "sqft": "2,376",
+      "adu": "—",
+      "school": "No assigned ES returned; guaranteed 7th Street Arts Magnet 9 (Choices application)",
+      "offPeak": "24.4",
+      "rush": "39–49",
+      "score": "6.80",
+      "interior": "5.5",
+      "space": "7.9",
+      "commuteScore": "5.6",
+      "schoolScore": "9",
+      "notes": "NEW (1 day). Compact U-kitchen, no island, not visibly open to the living room. 3 full baths, 7,096 sf hillside lot, ocean view, central AC. Yard layout and finish level not fully verified; interior scored as middling 5.5.",
+      "badges": [
+        "New",
+        "Choices"
+      ],
+      "hoaPenalty": "—",
+      "garage": "2-car",
+      "openHouse": "none",
+      "kitchen": "4.0"
+    },
+    {
+      "rank": 19,
+      "area": "Long Beach",
+      "links": [
+        {
+          "label": "2916 Charlemagne Ave, LB 90815",
+          "href": "https://www.zillow.com/homedetails/2916-Charlemagne-Ave-Long-Beach-CA-90815/21201754_zpid/"
+        }
+      ],
+      "price": "$1,247,000",
+      "bedsBaths": "3/3",
+      "sqft": "2,148",
+      "adu": "—",
+      "school": "Carver 8",
+      "offPeak": "24.9",
+      "rush": "40–50",
+      "score": "6.78",
+      "interior": "8.0",
+      "space": "7.2",
+      "commuteScore": "5.4",
+      "schoolScore": "8",
+      "notes": "Closed galley with granite, no island. Beautifully updated elsewhere; steam shower; $200k pool/putting-green backyard (2021); paid-off solar. 6,112 sf lot.",
+      "hoaPenalty": "—",
+      "garage": "2-car",
+      "openHouse": "none",
+      "kitchen": "3.5"
+    },
+    {
+      "rank": 20,
+      "area": "Long Beach",
+      "links": [
+        {
+          "label": "635 Edith Way, LB 90807",
+          "href": "https://www.zillow.com/homedetails/635-Edith-Way-Long-Beach-CA-90807/21161838_zpid/"
+        }
+      ],
+      "price": "$1,199,999 (↓ $20,001)",
+      "bedsBaths": "3/3",
+      "sqft": "2,478",
+      "adu": "—",
+      "school": "Los Cerritos 8",
+      "offPeak": "22.0",
+      "rush": "35–45",
+      "score": "6.57",
+      "interior": "7.6",
+      "space": "8.7",
+      "commuteScore": "6.6",
+      "schoolScore": "8",
+      "notes": "Remodeled galley with quartz, no island, not open to living. Strong space (2,478 sf, pool, 6,514 sf lot). Gated Crown Pointe HOA ($275/mo); −0.75 penalty applied.",
+      "hoaPenalty": "−0.75",
+      "badges": [
+        "HOA"
+      ],
+      "garage": "2-car",
+      "openHouse": "Sat 11/21 12–4 PM",
+      "kitchen": "3.5"
     },
     {
       "rank": 21,
@@ -340,15 +351,16 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "school": "Emerson Parkside 8",
       "offPeak": "26.1",
       "rush": "41–51",
-      "score": "6.55",
-      "interior": "7.0",
+      "score": "6.24",
+      "interior": "7.2",
       "space": "6.0",
       "commuteScore": "5.0",
       "schoolScore": "8",
-      "notes": "Shaker/quartz kitchen, AC, pool. Island not mentioned. Baths are 1 full + 2 ¾ (passes). 5,891 sf lot. Open houses Sat 11/21 1–4 PM · Sun 11/22 2–4 PM.",
+      "notes": "Closed U/galley, shaker/quartz, no island. AC, pool. Baths are 1 full + 2 ¾ (passes). 5,891 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sat 11/21 1–4 PM · Sun 11/22 2–4 PM"
+      "openHouse": "Sat 11/21 1–4 PM · Sun 11/22 2–4 PM",
+      "kitchen": "3.5"
     },
     {
       "rank": 22,
@@ -366,15 +378,16 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "school": "Burcham 8",
       "offPeak": "25.1",
       "rush": "40–50",
-      "score": "6.21",
-      "interior": "6.0",
+      "score": "5.95",
+      "interior": "6.2",
       "space": "5.8",
       "commuteScore": "5.3",
       "schoolScore": "8",
-      "notes": "Turnkey, hardwood, AC; only one bath noted as remodeled (moderately updated). Island / open concept not confirmed. 6,012 sf lot.",
+      "notes": "Closed galley, no island, only moderately updated (only one bath noted as remodeled). Turnkey, hardwood, AC. 6,012 sf lot.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sun 11/22 1–4 PM"
+      "openHouse": "Sun 11/22 1–4 PM",
+      "kitchen": "3.0"
     }
   ],
   "newThisWeek": {
@@ -1454,28 +1467,29 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "Still unverified, and the one to confirm first: 4437 Keever Ave. Broker and ATTOM sites say Longfellow 9. If the official school is Barton (4/10), it fails. 6816 Cerritos Ave would pass under the attached-suite rule only with a confirmed official 7+; Redfin currently lists Grant 4 as assigned. Also unverified: 474 E Adair, 6147 Gundry, 5447 Lime, 4722 Pepperwood, and 1028 E 10th (Lincoln 7 unofficial). 4235 Artesia Blvd still has only an unofficial Evelyn Carr 8."
     ]
   },
-  "weightsNote": "Scores are 0–10. The total weights interior 35%, space 25%, commute 20%, and school 20%. A home in a gated HOA then loses 0.75 points. That applies to 635 Edith Way and 4000 Marion Way (Crown Pointe, $275/mo). No other qualifying home is in a gated HOA. A non-gated fee is not penalized: 6320 W 85th St has Kentwood Guardians, about $23/year. The 2-car garage rule was added Nov 21; it is a hard filter, not part of the score. When two totals match, the higher interior score ranks first, then the lower list price.",
+  "weightsNote": "Scores are 0–10. The total weights kitchen 20%, interior 20%, space 25%, commute 20%, and school 20%. Kitchen is the island and open kitchen/living layout; 2001 Carfax Ave is the model (10) and 6320 W 85th St is the lower example (3.0, a cramped galley with no island). Interior is everything else about how modern and updated the home is. Space, commute, and school scores are unchanged from earlier today. A home in a gated HOA then loses 0.75 points. That applies to 635 Edith Way and 4000 Marion Way (Crown Pointe, $275/mo). No other qualifying home is in a gated HOA. A non-gated fee is not penalized: 6320 W 85th St has Kentwood Guardians, about $23/year. The 2-car garage rule was added Nov 21; it is a hard filter, not part of the score. The kitchen-weight change was added later Nov 21. When two totals match, the higher kitchen score ranks first, then the higher interior score, then the lower list price.",
   "top10": [
     {
       "rank": 1,
-      "address": "6320 W 85th St, Los Angeles (Westchester) 90045",
-      "href": "https://www.zillow.com/homedetails/6320-W-85th-St-Los-Angeles-CA-90045/20381325_zpid/",
-      "price": "$1,499,000",
-      "bedsBaths": "5 bd / 3 ba",
-      "size": "2,038 sf · 6,901 sf lot",
-      "score": "7.87",
-      "interior": "6.2",
-      "space": "6.8",
-      "commuteScore": "10.0",
-      "schoolScore": "10",
-      "school": "Kentwood Elementary",
-      "rating": "10/10",
-      "schoolNote": "official LAUSD",
-      "commute": "11.6 min off-peak / 16–22 min rush",
-      "notes": "Now #1 after the 2-car garage rule dropped 731 N Leland Ave. Best school and the shortest commute. The remodeled quartz kitchen is compact, has no island, and is not open to the living room (confirmed in listing photos), so interior is scored clearly below the island / open-concept homes. It has a small non-gated neighborhood HOA (Kentwood Guardians, about $23/year), which is not penalized.",
+      "address": "354 E Carson St, Long Beach 90807",
+      "href": "https://www.zillow.com/homedetails/354-E-Carson-St-Long-Beach-CA-90807/21161137_zpid/",
+      "price": "$1,450,000 (↓ $35,000 on Nov 20)",
+      "bedsBaths": "5 bd / 3.5 ba",
+      "size": "2,205 sf · 7,000 sf lot",
+      "score": "8.54",
+      "interior": "8.0",
+      "space": "7.6",
+      "commuteScore": "6.9",
+      "schoolScore": "9",
+      "school": "Longfellow",
+      "rating": "9/10",
+      "schoolNote": "official LBUSD",
+      "commute": "21.4 min off-peak / 34–44 min rush",
+      "notes": "Now #1 after kitchen was scored on its own. Photos show a large waterfall-quartz island with seating and a kitchen open to the living room — official remarks had not confirmed the island. Beautifully remodeled 1925 single-story on a big lot, with one of the better Long Beach commutes.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sun 11/22 2–4 PM"
+      "openHouse": "Sat 11/21 11 AM–4 PM · Sun 11/22 11 AM–4 PM",
+      "kitchen": "9.3"
     },
     {
       "rank": 2,
@@ -1484,8 +1498,8 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "price": "$1,495,000",
       "bedsBaths": "4 bd / 3 ba",
       "size": "2,015 sf · 5,820 sf corner lot",
-      "score": "7.79",
-      "interior": "9.8",
+      "score": "8.27",
+      "interior": "9.5",
       "space": "6.1",
       "commuteScore": "5.2",
       "schoolScore": "9",
@@ -1493,41 +1507,21 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "9/10",
       "schoolNote": "official LBUSD",
       "commute": "25.5 min off-peak / 40–50 min rush",
-      "notes": "Highest interior score: Tesoro gut remodel with a large waterfall island (seating) and a vaulted open kitchen/living/dining, confirmed in listing photos. An average-size house at the cap and a longer rush-hour drive keep it just behind #1.",
+      "notes": "The kitchen model: a large waterfall island with seating and a vaulted kitchen fully open to living and dining (Tesoro gut remodel). Holds at #2 because Carson edges it on space and commute, even though Carfax has the perfect kitchen. An average-size house at the cap and a longer rush-hour drive.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "none",
+      "kitchen": "10.0"
     },
     {
       "rank": 3,
-      "address": "354 E Carson St, Long Beach 90807",
-      "href": "https://www.zillow.com/homedetails/354-E-Carson-St-Long-Beach-CA-90807/21161137_zpid/",
-      "price": "$1,450,000 (↓ $35,000 on Nov 20)",
-      "bedsBaths": "5 bd / 3.5 ba",
-      "size": "2,205 sf · 7,000 sf lot",
-      "score": "7.74",
-      "interior": "7.6",
-      "space": "7.6",
-      "commuteScore": "6.9",
-      "schoolScore": "9",
-      "school": "Longfellow",
-      "rating": "9/10",
-      "schoolNote": "official LBUSD",
-      "commute": "21.4 min off-peak / 34–44 min rush",
-      "notes": "Beautifully remodeled 1925 single-story on a big lot, with one of the better Long Beach commutes. Official remarks say waterfall quartz but do not explicitly confirm an island.",
-      "hoaPenalty": "—",
-      "garage": "2-car",
-      "openHouse": "Sat 11/21 11 AM–4 PM · Sun 11/22 11 AM–4 PM"
-    },
-    {
-      "rank": 4,
       "address": "2037 245th St, Lomita 90717",
       "href": "https://www.zillow.com/homedetails/2037-245th-St-Lomita-CA-90717/21280953_zpid/",
       "price": "$1,375,000",
       "bedsBaths": "4 bd / 3 ba",
       "size": "1,932 sf · 5,147 sf lot",
-      "score": "7.67",
-      "interior": "8.8",
+      "score": "8.13",
+      "interior": "8.5",
       "space": "5.8",
       "commuteScore": "8.7",
       "schoolScore": "7",
@@ -1535,23 +1529,24 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "7/10",
       "schoolNote": "President Ave 6 assigned; guaranteed magnet, Choices application",
       "commute": "16.9 min off-peak / 27–37 min rush",
-      "notes": "Oversized kitchen island and a turnkey remodel, plus one of the shortest drives in the set. Missing from today’s extract, but the Zillow page still showed it active.",
+      "notes": "Oversized island with a cooktop, and an open layout that connects living and dining to the kitchen. Extensive turnkey remodel, plus one of the shortest drives in the set. Magnet path needs a Choices application. Missing from today’s extract, but the Zillow page still showed it active.",
       "hoaPenalty": "—",
       "badges": [
         "Choices"
       ],
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "none",
+      "kitchen": "9.2"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "address": "1876 Petaluma Ave, Long Beach 90815",
       "href": "https://www.zillow.com/homedetails/1876-Petaluma-Ave-Long-Beach-CA-90815/21207155_zpid/",
       "price": "$1,439,000",
       "bedsBaths": "4 bd / 3 ba",
       "size": "2,411 sf · 6,412 sf lot",
-      "score": "7.51",
-      "interior": "8.7",
+      "score": "8.03",
+      "interior": "9.0",
       "space": "7.7",
       "commuteScore": "4.7",
       "schoolScore": "8",
@@ -1559,10 +1554,36 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "8/10",
       "schoolNote": "",
       "commute": "26.7 min off-peak / 42–52 min rush",
-      "notes": "Large kitchen island and a top-to-bottom renovation (roof, plumbing, electrical, windows) in a 2,411 sf house. Open concept was not explicitly confirmed. The rush-hour drive is among the longer ones.",
+      "notes": "Large island and a Kitchen Family Room Combo on a top-to-bottom renovation (new roof, plumbing, electrical, and windows) in a 2,411 sf house. The rush-hour drive is among the longer ones.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "none"
+      "openHouse": "none",
+      "kitchen": "8.8"
+    },
+    {
+      "rank": 5,
+      "address": "211 N Western Ave, San Pedro 90732",
+      "href": "https://www.zillow.com/homedetails/211-N-Western-Ave-San-Pedro-CA-90732/21350738_zpid/",
+      "price": "$1,079,000",
+      "bedsBaths": "main 3/2 + suite",
+      "size": "1,635 sf listed · 7,694 sf lot",
+      "score": "7.91",
+      "interior": "8.3",
+      "space": "6.2",
+      "commuteScore": "6.0",
+      "schoolScore": "8",
+      "school": "Bandini Street",
+      "rating": "8/10",
+      "schoolNote": "official LAUSD, grades 1–5",
+      "commute": "24.0 min off-peak / 36–46 min rush",
+      "notes": "Oversized quartz island (about 90×42) with seating, fully open living/dining/kitchen, plus a qualifying 1/1 in-law. Lowest price in the Top 10. Busy Western Ave is a red flag and is already docked in the space score. Some MLS feeds label it multi-family. Suite is a registered short-term rental (~$2,100/mo). NEW under the attached-suite rule.",
+      "hoaPenalty": "—",
+      "badges": [
+        "ADU rule"
+      ],
+      "garage": "2-car",
+      "openHouse": "none",
+      "kitchen": "9.5"
     },
     {
       "rank": 6,
@@ -1571,8 +1592,8 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "price": "$1,499,000",
       "bedsBaths": "5 bd / 4 ba",
       "size": "3,267 sf · 7,496 sf lot",
-      "score": "7.48",
-      "interior": "6.0",
+      "score": "7.88",
+      "interior": "6.5",
       "space": "10.0",
       "commuteScore": "5.4",
       "schoolScore": "9",
@@ -1580,47 +1601,24 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "9/10",
       "schoolNote": "guaranteed magnet, Choices application",
       "commute": "26.0 min off-peak / 38–48 min rush",
-      "notes": "Most living space in the set, at the price cap. Interior is granite/wood, not a documented island or open-concept remodel. MLS lists it as SFR, but it is marketed as “two homes in one.”",
+      "notes": "Most living space in the set (marketed as two homes in one), at the price cap. Photos show a traditional granite kitchen that opens to dining, with no island, so kitchen is only mid-band. 7th St Magnet 9 (Choices).",
       "hoaPenalty": "—",
       "badges": [
         "Choices"
       ],
       "garage": "2-car",
-      "openHouse": "Sat 11/21 2–4 PM · Sun 11/22 2–4 PM"
+      "openHouse": "Sat 11/21 2–4 PM · Sun 11/22 2–4 PM",
+      "kitchen": "6.0"
     },
     {
       "rank": 7,
-      "address": "211 N Western Ave, San Pedro 90732",
-      "href": "https://www.zillow.com/homedetails/211-N-Western-Ave-San-Pedro-CA-90732/21350738_zpid/",
-      "price": "$1,079,000",
-      "bedsBaths": "main 3/2 + suite",
-      "size": "1,635 sf listed · 7,694 sf lot",
-      "score": "7.32",
-      "interior": "8.5",
-      "space": "6.2",
-      "commuteScore": "6.0",
-      "schoolScore": "8",
-      "school": "Bandini Street",
-      "rating": "8/10",
-      "schoolNote": "official LAUSD, grades 1–5",
-      "commute": "24.0 min off-peak / 36–46 min rush",
-      "notes": "Quartz island and an open-concept living/kitchen/dining in a remodeled 3/2, plus a qualifying 1/1 in-law (own entrance, bath, kitchen, laundry) on a 7,694 sf lot. Lowest price in the Top 10. Busy Western Ave is a red flag and is already docked in the space score. Some MLS feeds label it multi-family. Suite is a registered short-term rental (~$2,100/mo). NEW under the attached-suite rule.",
-      "hoaPenalty": "—",
-      "badges": [
-        "ADU rule"
-      ],
-      "garage": "2-car",
-      "openHouse": "none"
-    },
-    {
-      "rank": 8,
       "address": "3482 Iroquois Ave, Long Beach 90808",
       "href": "https://www.zillow.com/homedetails/3482-Iroquois-Ave-Long-Beach-CA-90808/21137499_zpid/",
       "price": "$1,399,000",
       "bedsBaths": "5 bd / 3.5 ba",
       "size": "3,012 sf · 5,584 sf lot",
-      "score": "7.24",
-      "interior": "7.0",
+      "score": "7.79",
+      "interior": "7.5",
       "space": "9.8",
       "commuteScore": "4.7",
       "schoolScore": "7",
@@ -1628,10 +1626,33 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "7/10",
       "schoolNote": "",
       "commute": "27.0 min off-peak / 42–52 min rush",
-      "notes": "Strong space (3,012 sf, 5 beds) on a 2011 custom build with paid-off solar. Island and open concept were not confirmed, so interior is middling; school is the minimum 7, and the commute is among the longer ones. Confirm yard depth. Open house Sun 11/22 1–4 PM.",
+      "notes": "Strong space (3,012 sf, 5 beds) on a 2011 custom build with paid-off solar. Photos show an open great room with a long breakfast-bar peninsula, not a freestanding island. School is the minimum 7, and the commute is among the longer ones. Confirm yard depth.",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sun 11/22 1–4 PM"
+      "openHouse": "Sun 11/22 1–4 PM",
+      "kitchen": "7.5"
+    },
+    {
+      "rank": 8,
+      "address": "6320 W 85th St, Los Angeles (Westchester) 90045",
+      "href": "https://www.zillow.com/homedetails/6320-W-85th-St-Los-Angeles-CA-90045/20381325_zpid/",
+      "price": "$1,499,000",
+      "bedsBaths": "5 bd / 3 ba",
+      "size": "2,038 sf · 6,901 sf lot",
+      "score": "7.74",
+      "interior": "7.2",
+      "space": "6.8",
+      "commuteScore": "10.0",
+      "schoolScore": "10",
+      "school": "Kentwood Elementary",
+      "rating": "10/10",
+      "schoolNote": "official LAUSD",
+      "commute": "11.6 min off-peak / 16–22 min rush",
+      "notes": "Drops from #1 because kitchen is now its own 20% factor: a remodeled but compact galley with no island, not open to the living room (the lower kitchen example). Still in the Top 10 on Kentwood 10 and the shortest drive (11.6 min off-peak). It has a small non-gated neighborhood HOA (Kentwood Guardians, about $23/year), which is not penalized.",
+      "hoaPenalty": "—",
+      "garage": "2-car",
+      "openHouse": "Sun 11/22 2–4 PM",
+      "kitchen": "3.0"
     },
     {
       "rank": 9,
@@ -1640,8 +1661,8 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "price": "$1,349,000",
       "bedsBaths": "4 bd / 3 ba",
       "size": "2,130 sf · 7,038 sf lot",
-      "score": "7.12",
-      "interior": "6.3",
+      "score": "7.58",
+      "interior": "6.8",
       "space": "7.2",
       "commuteScore": "8.6",
       "schoolScore": "7",
@@ -1649,31 +1670,33 @@ window.HOUSE_WEEKS["2026-11-21"] = {
       "rating": "7/10",
       "schoolNote": "Choices application",
       "commute": "17.3 min off-peak / 27–37 min rush",
-      "notes": "Moved into the Top 10 after the 2-car garage rule. Updated (hardwood, granite), not brand-new; breakfast counter rather than an island; cul-de-sac, spa. The only qualifying home with a 3-car garage.",
+      "notes": "Holds at #9. Generous breakfast counter in a kitchen connected through a wide opening, not a large island. Updated hardwood and granite, cul-de-sac, spa. The only qualifying home with a 3-car garage.",
       "hoaPenalty": "—",
       "garage": "3-car",
-      "openHouse": "Sat 11/21 2–4 PM · Sun 11/22 2–4 PM"
+      "openHouse": "Sat 11/21 2–4 PM · Sun 11/22 2–4 PM",
+      "kitchen": "6.5"
     },
     {
       "rank": 10,
-      "address": "2102 Pattiz Ave, Long Beach 90815",
-      "href": "https://www.zillow.com/homedetails/2102-Pattiz-Ave-Long-Beach-CA-90815/21209086_zpid/",
-      "price": "$1,224,888",
+      "address": "5103 E Peabody St, Long Beach 90808",
+      "href": "https://www.zillow.com/homedetails/5103-E-Peabody-St-Long-Beach-CA-90808/465670604_zpid/",
+      "price": "$1,198,000",
       "bedsBaths": "4 bd / 3 ba",
-      "size": "1,948 sf · 5,600 sf lot",
-      "score": "7.05",
-      "interior": "8.3",
-      "space": "6.4",
-      "commuteScore": "4.7",
-      "schoolScore": "8",
-      "school": "Tincher",
+      "size": "1,535 sf · 6,351 sf lot",
+      "school": "Carver",
       "rating": "8/10",
       "schoolNote": "",
-      "commute": "26.9 min off-peak / 42–52 min rush",
-      "notes": "Moved into the Top 10 after the 2-car garage rule. Turnkey: large gathering island, granite/cherry kitchen; updated baths, vinyl floors, new roof and HVAC (2023).",
+      "commute": "24.8 min off-peak / 40–50 min rush",
       "hoaPenalty": "—",
       "garage": "2-car",
-      "openHouse": "Sat 11/21 12–4 PM · Sun 11/22 12–4 PM"
+      "openHouse": "Sun 11/22 12–4 PM",
+      "score": "7.52",
+      "kitchen": "9.1",
+      "interior": "8.2",
+      "space": "5.5",
+      "commuteScore": "5.4",
+      "schoolScore": "8",
+      "notes": "The biggest mover: up from #19 after photos showed a large white island with seating, fully open to the living room, in a fully remodeled house with a pool and spa. Modest 1,535 sf is the tradeoff. Carver 8. Primary bedroom has its own exterior entrance; R-3 zoned."
     }
   ],
   "excludedGarage": {

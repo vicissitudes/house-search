@@ -242,7 +242,9 @@
     if (home.adu && home.adu !== "—") card.appendChild(el("p", "home-line", "ADU: " + home.adu));
     if (home.hoaPenalty && home.hoaPenalty !== "—") card.appendChild(el("p", "home-line", "HOA penalty: " + home.hoaPenalty));
     const factors = el("div", "factor-row");
-    [["Int", home.interior], ["Space", home.space], ["Commute", home.commuteScore], ["School", home.schoolScore]].forEach(function (pair) {
+    const factorPairs = [["Int", home.interior], ["Space", home.space], ["Commute", home.commuteScore], ["School", home.schoolScore]];
+    if (home.kitchen != null) factorPairs.unshift(["Kit", home.kitchen]);
+    factorPairs.forEach(function (pair) {
       if (pair[1] == null || String(pair[1]).trim() === "") return;
       const chip = el("div", "factor-chip");
       chip.appendChild(el("span", "factor-chip-label", pair[0]));
@@ -254,9 +256,12 @@
     return card;
   }
 
+  const topHasKitchen = listHas(data.top10, "kitchen");
   const topHasGarage = listHas(data.top10, "garage");
   const topHasOpen = listHas(data.top10, "openHouse");
-  const topHeaders = ["#", "Address", "Price", "Beds / baths", "Total", "Interior", "Space", "Commute", "School", "HOA penalty"];
+  const topHeaders = ["#", "Address", "Price", "Beds / baths", "Total"];
+  if (topHasKitchen) topHeaders.push("Kitchen");
+  topHeaders.push("Interior", "Space", "Commute", "School", "HOA penalty");
   if (topHasGarage) topHeaders.push("Garage");
   if (topHasOpen) topHeaders.push("Open house");
   topHeaders.push("Notes");
@@ -280,6 +285,7 @@
       tr.appendChild(cell("Price", home.price, "num"));
       tr.appendChild(cell("Beds / baths", beds));
       tr.appendChild(cell("Total", total, "num"));
+      if (topHasKitchen) tr.appendChild(cell("Kitchen", home.kitchen, "num"));
       tr.appendChild(cell("Interior", factor(home.interior, home.interiorNote), "num"));
       tr.appendChild(cell("Space", factor(home.space), "num"));
       tr.appendChild(cell("Commute", factor(home.commuteScore, home.commute), "num"));
@@ -326,9 +332,11 @@
   const status = el("p", "filter-status");
   status.setAttribute("aria-live", "polite");
 
+  const otherHasKitchen = listHas(data.otherQualifying, "kitchen");
   const otherHasGarage = listHas(data.otherQualifying, "garage");
   const otherHasOpen = listHas(data.otherQualifying, "openHouse");
   const otherHeaders = ["#", "Address", "Price", "Bd/Ba", "Sq ft", "ADU", "Elementary (GS)", "Off-peak", "Rush est.", "HOA penalty", "Score"];
+  if (otherHasKitchen) otherHeaders.push("Kitchen");
   if (otherHasGarage) otherHeaders.push("Garage");
   if (otherHasOpen) otherHeaders.push("Open house");
   otherHeaders.push("Notes");
@@ -354,9 +362,13 @@
     tr.appendChild(cell("Rush est.", home.rush, "num"));
     tr.appendChild(cell("HOA penalty", hoaPenalty(home.hoaPenalty), "num"));
     const score = document.createElement("div");
+    const factorBits = [];
+    if (home.kitchen != null) factorBits.push("kit " + home.kitchen);
+    factorBits.push("int " + home.interior, "space " + home.space, "commute " + home.commuteScore, "school " + home.schoolScore);
     score.appendChild(el("span", "total", display(home.score)));
-    score.appendChild(el("span", "factor-sub", "int " + home.interior + " · space " + home.space + " · commute " + home.commuteScore + " · school " + home.schoolScore));
+    score.appendChild(el("span", "factor-sub", factorBits.join(" · ")));
     tr.appendChild(cell("Score", score, "num"));
+    if (otherHasKitchen) tr.appendChild(cell("Kitchen", home.kitchen, "num"));
     if (otherHasGarage) tr.appendChild(cell("Garage", home.garage));
     if (otherHasOpen) tr.appendChild(cell("Open house", home.openHouse));
     tr.appendChild(cell("Notes", home.notes));
