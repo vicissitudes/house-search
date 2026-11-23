@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Crime comparison: Venezia, Carfax, Knoxville, and Frances</title>
+  <meta name="description" content="Official incident counts for two 12-month windows put 2001 Carfax Ave among the quieter of the three homes with address-level data. 1117 Venezia Dr looks safest on neighborhood grades, but no official radius counts could be retrieved there.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .nav { top: 0; }
+    .section { scroll-margin-top: 4.5rem; }
+    .nameplate a {
+      color: inherit;
+      text-decoration: none;
+      letter-spacing: 0.14em;
+    }
+    .nameplate a:hover { text-decoration: underline; }
+    .section-caption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: -0.25rem 0 0.7rem;
+      max-width: 46rem;
+    }
+    .props {
+      display: grid;
+      grid-template-columns: 11.5rem 1fr;
+      gap: 0.35rem 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      margin: 0.85rem 0 1rem;
+      max-width: 46rem;
+    }
+    .props dt {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding-top: 0.2rem;
+    }
+    .props dd { margin: 0; }
+    .callout .lead {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 560;
+      margin: 0 0 0.35rem;
+    }
+    .proscons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin: 0.85rem 0 1.1rem;
+    }
+    .pros, .cons {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.9rem 1rem 1rem;
+    }
+    .pros { border-left: 5px solid var(--good); }
+    .cons { border-left: 5px solid var(--warn); }
+    .pros h3, .cons h3 { margin: 0 0 0.45rem; font-size: 1.15rem; }
+    .pros ul, .cons ul, .plain-list { margin: 0.2rem 0 0; padding-left: 1.15rem; }
+    .pros li, .cons li, .plain-list li { margin: 0.45rem 0; }
+    .link-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      gap: 0.7rem;
+      margin: 0.85rem 0 1rem;
+    }
+    .link-card {
+      display: block;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.8rem 0.95rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link-card:hover { border-color: var(--ink); }
+    .link-card-title {
+      color: var(--accent);
+      font-weight: 650;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .link-card-site {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .chart-block { margin: 0.9rem 0 1.15rem; max-width: 46rem; }
+    .chart-title {
+      margin: 0 0 0.45rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .bars { display: grid; gap: 0.65rem; }
+    .bar-row { display: grid; grid-template-columns: 8.2rem 1fr; gap: 0.55rem; align-items: start; }
+    .bar-label { font-size: 0.88rem; padding-top: 0.1rem; }
+    .bar-track {
+      background: #efe6d6;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 1.55rem;
+    }
+    .bar-fill {
+      background: var(--accent);
+      color: #fbf8f3;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.45rem;
+      border-radius: 8px;
+      min-width: 2.4rem;
+      box-sizing: border-box;
+    }
+    .bar-row.is-emphasis .bar-fill { background: var(--ink); }
+    .bar-meta { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+    .line-chart { width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+    .subhead {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 560;
+      margin: 1.35rem 0 0.45rem;
+    }
+    .view-block { margin: 0.4rem 0 1.2rem; }
+    footer.criteria .colophon { margin-top: 0.4rem; }
+    @media (max-width: 700px) {
+      .props { grid-template-columns: 1fr; gap: 0.15rem; }
+      .props dt { padding-top: 0.55rem; }
+      .props dt:first-child { padding-top: 0; }
+      .proscons { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; gap: 0.15rem; }
+      .link-cards { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to the report</a>
+  <main id="content">
+    <div class="wrap">
+      <header class="masthead">
+        <div class="nameplate">
+          <span>Personal search</span>
+          <a href="./index.html">Back to weekly digest</a>
+        </div>
+        <h1>Crime and safety: four homes compared</h1>
+        <p class="lede">Official incident counts for two 12-month windows put 2001 Carfax Ave among the quieter of the three homes with address-level data. 1117 Venezia Dr looks safest on neighborhood grades, but no official radius counts could be retrieved there.</p>
+        <p class="prepared">Figures compiled Nov 22, 2026, Pacific Time. This is a public-records comparison, not a safety guarantee, inspection, or appraisal.</p>
+      </header>
+      <nav class="nav" aria-label="On this page">
+        <ul>
+          <li><a href="./index.html">Back to weekly digest</a></li><li><a href="#method">How to read this</a></li><li><a href="#homes">The four homes</a></li><li><a href="#ranking">Ranking, safest to least safe</a></li><li><a href="#counts">Official counts by radius</a></li><li><a href="#block">Same block</a></li><li><a href="#grades">Neighborhood grades (CrimeGrade, November 2026)</a></li><li><a href="#notes">What stands out at each address</a></li><li><a href="#sources">Sources</a></li>
+        </ul>
+      </nav>
+      <section class="section" id="method">
+<h2>How to read this</h2>
+<div class="callout">
+<p class="lead">These agencies are not perfectly comparable</p>
+<p>Long Beach and Los Angeles counts come from official open incident files, but they are different departments, with different coding, late-report rules, and street grids. A record is an offense row, not always a unique event. Addresses are 100-block anonymized; distances use Census-geocoded block points. Sexual-assault addresses are redacted in Long Beach and cannot be placed in a radius. El Dorado County Sheriff address-level data for 1117 Venezia Dr could not be retrieved, so that home is ranked on neighborhood estimates only. Do not treat this as a victimization forecast or an appraisal of safety.</p>
+</div>
+<p>Windows match the Carfax crime work: prior year is date_reported (or LAPD date_rptd) Nov 1, 2024 through Nov 1, 2025; latest year is Nov 1, 2025 through Nov 1, 2026. Both endpoints are inclusive, so Nov 1, 2025 appears in each window. That overlap did not change the Long Beach radius counts (zero locatable records that day in these radii). Categories are UCR-style violent (murder and nonnegligent manslaughter, rape, robbery, aggravated assault), burglary, vehicle break-in / auto theft (motor-vehicle theft, auto burglary, theft from a vehicle, and theft of vehicle parts), other larceny, and other (including simple assault, intimidation, vandalism, fraud, and drugs). DataLB for Long Beach was queried Nov 22, 2026 (data processed 8:00 a.m. PT). LAPD NIBRS data in the Frances radius runs through Oct 31, 2026. Long Beach open data is published with a 21-day delay.</p>
+</section>
+<section class="section" id="homes">
+<h2>The four homes</h2>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Home</th><th>Listing snapshot</th><th>Jurisdiction</th><th>Point used</th></tr></thead>
+<tbody>
+<tr><td data-label="Home">2001 Carfax Ave, Long Beach 90815</td><td data-label="Listing snapshot">Active sale listing, $1,495,000, 4 bed / 3 bath, listed 2,015 sqft (see the Carfax deep-dive Page for the permit vs. list-size issue).</td><td data-label="Jurisdiction">Long Beach PD</td><td data-label="Point used">33.79236, −118.11003</td></tr><tr><td data-label="Home">2658 Knoxville Ave, Long Beach 90815</td><td data-label="Listing snapshot">Not found as a current listing. Sold May 21, 2025 for $1,075,000, 3 bed / 2 bath, 1,251 sqft (MLS RS25060468).</td><td data-label="Jurisdiction">Long Beach PD</td><td data-label="Point used">33.80431, −118.10436</td></tr><tr><td data-label="Home">3827 Frances Ave, Los Angeles 90066</td><td data-label="Listing snapshot">Geneva@Pacific apartments. A 2 bed / 2 bath, 1,028 sqft unit (505) was advertised at $5,100/month on Zillow and Realtor.com when checked Nov 22, 2026.</td><td data-label="Jurisdiction">LAPD (Pacific area)</td><td data-label="Point used">34.00168, −118.43653</td></tr><tr><td data-label="Home">1117 Venezia Dr, El Dorado Hills 95762</td><td data-label="Listing snapshot">No current sale listing was found for this address. It is in unincorporated El Dorado County (Sheriff jurisdiction).</td><td data-label="Jurisdiction">El Dorado County Sheriff</td><td data-label="Point used">38.69351, −121.09849</td></tr></tbody>
+</table>
+</div>
+<p>Census geocoder matches, Nov 22, 2026. Carfax and Knoxville are 0.89 mile apart, so their 0.5-mile circles overlap and are not independent areas. Frances is a rental building on the Venice Blvd edge of Mar Vista, not a single-family sale comparable to the Long Beach houses.</p>
+</section>
+<section class="section" id="ranking">
+<h2>Ranking, safest to least safe</h2>
+<ol class="plain-list">
+<li>1117 Venezia Dr, El Dorado Hills. Safest on the evidence that exists: CrimeGrade (updated November 2026) grades El Dorado Hills A+ overall, A+ for violent crime, and A for property crime, about 13 reported crimes a year per 1,000 residents. Official 0.25- and 0.5-mile incident counts could not be retrieved, so this rank is less certain than the three below.</li>
+<li>2001 Carfax Ave, Long Beach. Lowest official radius counts of the three homes with incident data. The 2000 block of Carfax had zero records in both windows. Latest year: 24 locatable records within 0.25 mile (4 UCR-style violent) and 70 within 0.5 mile (6 UCR-style violent). CrimeGrade for Los Altos: overall B, violent A-, property C-.</li>
+<li>2658 Knoxville Ave, Long Beach. Same city, same dataset, and same method as Carfax, but higher official counts in both radii, especially at 0.5 mile (122 latest-year records vs 70 at Carfax), with more residential burglary and more activity toward Willow and Spring. The 2600 block of Knoxville had two latest-year records (petty theft and credit-card fraud, both July 6, 2026). CrimeGrade for The Plaza is slightly better than Los Altos (overall B+, violent A, property C+), which does not override the official nearby counts.</li>
+<li>3827 Frances Ave, Mar Vista. Far higher official LAPD counts: 138 latest-year records within 0.25 mile (13 UCR-style violent) and 344 within 0.5 mile (31 UCR-style violent). Vehicle crime and other property crime dominate, and Venice Blvd sits inside the quarter-mile. CrimeGrade for Mar Vista: overall B-, violent A-, property D. The 3800 block of Frances had one latest-year petty theft (Aug 29, 2026).</li>
+</ol>
+<p>This ranking leans on official radius counts where they exist, then on neighborhood grades, and it treats Venezia’s first-place finish as provisional until address-level Sheriff data can be checked.</p>
+</section>
+<section class="section" id="counts">
+<h2>Official counts by radius</h2>
+<div class="view-block">
+<h3 class="subhead">Latest year (Nov 2025–Nov 2026)</h3>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Venezia</th><th>Carfax</th><th>Knoxville</th><th>Frances</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">UCR-style violent</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">4</td><td data-label="Knoxville" class="num">1</td><td data-label="Frances" class="num">13</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">2</td><td data-label="Knoxville" class="num">5</td><td data-label="Frances" class="num">7</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">5</td><td data-label="Knoxville" class="num">2</td><td data-label="Frances" class="num">33</td></tr><tr><td data-label="Type">Theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">7</td><td data-label="Knoxville" class="num">10</td><td data-label="Frances" class="num">26</td></tr><tr><td data-label="Type">Other</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">6</td><td data-label="Knoxville" class="num">11</td><td data-label="Frances" class="num">59</td></tr><tr><td data-label="Type">Total locatable records</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">24</td><td data-label="Knoxville" class="num">29</td><td data-label="Frances" class="num">138</td></tr></tbody>
+</table>
+</div>
+<p>Within 0.25 mile, latest year. Venezia is n/a because no official radius extract was obtained.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Venezia</th><th>Carfax</th><th>Knoxville</th><th>Frances</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">UCR-style violent</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">6</td><td data-label="Knoxville" class="num">8</td><td data-label="Frances" class="num">31</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">3</td><td data-label="Knoxville" class="num">8</td><td data-label="Frances" class="num">29</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">17</td><td data-label="Knoxville" class="num">18</td><td data-label="Frances" class="num">77</td></tr><tr><td data-label="Type">Theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">29</td><td data-label="Knoxville" class="num">38</td><td data-label="Frances" class="num">59</td></tr><tr><td data-label="Type">Other</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">15</td><td data-label="Knoxville" class="num">50</td><td data-label="Frances" class="num">148</td></tr><tr><td data-label="Type">Total locatable records</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">70</td><td data-label="Knoxville" class="num">122</td><td data-label="Frances" class="num">344</td></tr></tbody>
+</table>
+</div>
+<p>Within 0.5 mile, latest year.</p>
+</div>
+<div class="view-block">
+<h3 class="subhead">Prior year (Nov 2024–Nov 2025)</h3>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Venezia</th><th>Carfax</th><th>Knoxville</th><th>Frances</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">UCR-style violent</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">1</td><td data-label="Knoxville" class="num">1</td><td data-label="Frances" class="num">16</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">2</td><td data-label="Knoxville" class="num">7</td><td data-label="Frances" class="num">14</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">3</td><td data-label="Knoxville" class="num">5</td><td data-label="Frances" class="num">30</td></tr><tr><td data-label="Type">Theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">2</td><td data-label="Knoxville" class="num">5</td><td data-label="Frances" class="num">18</td></tr><tr><td data-label="Type">Other</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">6</td><td data-label="Knoxville" class="num">9</td><td data-label="Frances" class="num">67</td></tr><tr><td data-label="Type">Total locatable records</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">14</td><td data-label="Knoxville" class="num">27</td><td data-label="Frances" class="num">145</td></tr></tbody>
+</table>
+</div>
+<p>Within 0.25 mile, prior year. Venezia is n/a because no official radius extract was obtained.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Venezia</th><th>Carfax</th><th>Knoxville</th><th>Frances</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">UCR-style violent</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">3</td><td data-label="Knoxville" class="num">9</td><td data-label="Frances" class="num">33</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">3</td><td data-label="Knoxville" class="num">11</td><td data-label="Frances" class="num">23</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">13</td><td data-label="Knoxville" class="num">31</td><td data-label="Frances" class="num">71</td></tr><tr><td data-label="Type">Theft</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">14</td><td data-label="Knoxville" class="num">43</td><td data-label="Frances" class="num">42</td></tr><tr><td data-label="Type">Other</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">26</td><td data-label="Knoxville" class="num">45</td><td data-label="Frances" class="num">149</td></tr><tr><td data-label="Type">Total locatable records</td><td data-label="Venezia" class="num">n/a</td><td data-label="Carfax" class="num">59</td><td data-label="Knoxville" class="num">139</td><td data-label="Frances" class="num">318</td></tr></tbody>
+</table>
+</div>
+<p>Within 0.5 mile, prior year.</p>
+</div>
+<p>Long Beach source: DataLB “LBPD Criminal Incident Data,” <a href="https://data.longbeach.gov/explore/dataset/lbpd-criminal-incident-data/information/">https://data.longbeach.gov/explore/dataset/lbpd-criminal-incident-data/information/</a>. Los Angeles source: LAPD NIBRS Offenses Dataset, <a href="https://data.lacity.org/d/k7nn-b2ep">https://data.lacity.org/d/k7nn-b2ep</a>, filtered on date_rptd and hundred-block coordinates. A date_occ filter in the same windows changes Frances totals only slightly (for example, latest 0.5 mile falls from 344 to 332). LAPD records in this radius end Oct 31, 2026. Other includes simple assault; UCR-style violent does not.</p>
+</section>
+<section class="section" id="block">
+<h2>Same block</h2>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Home</th><th>Block used</th><th>Prior year</th><th>Latest year</th></tr></thead>
+<tbody>
+<tr><td data-label="Home">2001 Carfax Ave</td><td data-label="Block used">2000 Carfax Ave</td><td data-label="Prior year">0 records</td><td data-label="Latest year">0 records</td></tr><tr><td data-label="Home">2658 Knoxville Ave</td><td data-label="Block used">2600 Knoxville Ave (0.07 mi from the house point)</td><td data-label="Prior year">0 records</td><td data-label="Latest year">2 records on July 6, 2026: petty theft and credit-card / ATM fraud</td></tr><tr><td data-label="Home">3827 Frances Ave</td><td data-label="Block used">3800 Frances Ave (0.02 mi from the house point)</td><td data-label="Prior year">0 records</td><td data-label="Latest year">1 record on Aug 29, 2026: petty theft (all other larceny)</td></tr><tr><td data-label="Home">1117 Venezia Dr</td><td data-label="Block used">1100 Venezia Dr</td><td data-label="Prior year">n/a</td><td data-label="Latest year">n/a</td></tr></tbody>
+</table>
+</div>
+<p>The 2000 block of Carfax also has no records in the 2023–present DataLB file except a motor-vehicle theft on June 24, 2023. Nearby but not same-block: a prior-year auto burglary on the 2300 block of Carfax (Dec 7, 2024, 0.49 mi) and a latest-year motor-vehicle theft on the 2500 block of Knoxville (Oct 20, 2026, 0.23 mi).</p>
+</section>
+<section class="section" id="grades">
+<h2>Neighborhood grades (CrimeGrade, November 2026)</h2>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Area used</th><th>Overall</th><th>Violent</th><th>Property</th><th>Selected rates</th></tr></thead>
+<tbody>
+<tr><td data-label="Area used">El Dorado Hills (for Venezia)</td><td data-label="Overall">A+ (925)</td><td data-label="Violent">A+ (928)</td><td data-label="Property">A (917)</td><td data-label="Selected rates">About 13 crimes per 1,000 residents; theft 4.7; burglary 1.0; vehicle theft 1.0</td></tr><tr><td data-label="Area used">Los Altos (for Carfax)</td><td data-label="Overall">B (671)</td><td data-label="Violent">A- (845)</td><td data-label="Property">C- (371)</td><td data-label="Selected rates">About 8.0 violent crimes per 1,000 (includes simple assault); 40% below the U.S. and 54% below Long Beach</td></tr><tr><td data-label="Area used">The Plaza (for Knoxville)</td><td data-label="Overall">B+ (742)</td><td data-label="Violent">A (875)</td><td data-label="Property">C+ (515)</td><td data-label="Selected rates">About 4.9 violent crimes per 1,000 (includes simple assault); 63% below the U.S. and 71% below Long Beach</td></tr><tr><td data-label="Area used">Mar Vista (for Frances)</td><td data-label="Overall">B- (607)</td><td data-label="Violent">A- (831)</td><td data-label="Property">D (223)</td><td data-label="Selected rates">About 30 crimes per 1,000 residents; theft 14.4; vehicle theft 3.3 (grade F); burglary 4.0</td></tr></tbody>
+</table>
+</div>
+<p>CrimeGrade is a modeled neighborhood estimate updated November 2026, not official block-level counts and not a grade for a single address. The Plaza’s slightly better grades than Los Altos sit beside higher official counts around Knoxville, because a 0.5-mile radius can take in commercial streets that a neighborhood average smooths over. Long Beach citywide violent crime is graded C+ on the same site, with reported violent crime up 29% since 2019.</p>
+</section>
+<section class="section" id="notes">
+<h2>What stands out at each address</h2>
+<ul class="plain-list">
+<li>Carfax: the block itself was quiet both years. Nearby risk is vehicle and vehicle-parts crime, plus a small number of aggravated assaults toward Stearns and Palo Verde. Broad violent records inside 0.5 mile fell year over year; UCR-style violent records rose from 3 to 6 (small counts). Three sex-offense records in RD 634 in the latest year have redacted addresses and could not be placed.</li>
+<li>Knoxville: official counts are higher than Carfax at both radii, and the 0.5-mile circle reaches Willow and Spring. Residential burglary was more common here in the prior year (7 records inside 0.25 mile, several on the 2800 block of Iroquois, which also recurs in the latest year). Latest-year UCR-style violent inside 0.25 mile was one aggravated assault at 2700 Josie on Sep 19, 2026 (0.08 mi). Some sex-offense records in nearby reporting districts were redacted and excluded from radius totals.</li>
+<li>Frances: counts are much higher in both years and both radii, with vehicle break-ins and thefts the largest slices and Venice Blvd inside 0.25 mile. Same-block activity was still light (one petty theft in the latest year). Year over year, 0.25-mile totals eased slightly (145 to 138) while 0.5-mile totals rose (318 to 344), led by theft and vehicle records. These figures should not be added to Long Beach counts as if they were one system.</li>
+<li>Venezia: no official same-block, 0.25-mile, or 0.5-mile counts are in this Page. CrimeMapping.com requests were blocked from this environment. CA DOJ OpenJustice Crimes and Clearances files could not be downloaded (the portal returned a login or HTML page, not a CSV). The Sheriff’s citizen incident feed at <a href="https://eldoradosheriff.citizenrims.com/">https://eldoradosheriff.citizenrims.com/</a> exists but a complete two-year, radius-filtered extract was not obtained. The only quantitative source used here is CrimeGrade for El Dorado Hills as a whole, which is a neighborhood estimate, not this street.</li>
+</ul>
+</section>
+<section class="section" id="sources">
+<h2>Sources</h2>
+<div class="link-cards">
+<a class="link-card" href="https://data.longbeach.gov/explore/dataset/lbpd-criminal-incident-data/information/"><span class="link-card-title">LBPD Criminal Incident Data (used for Carfax and Knoxville)</span><span class="link-card-site">DataLB</span></a>
+<a class="link-card" href="https://data.lacity.org/d/k7nn-b2ep"><span class="link-card-title">LAPD NIBRS Offenses Dataset (used for Frances)</span><span class="link-card-site">data.lacity.org</span></a>
+<a class="link-card" href="https://www.longbeach.gov/police/press-releases/lbpd-launches-new-interactive-crime-dashboard/"><span class="link-card-title">LBPD Crime Dashboard launch (21-day delay)</span><span class="link-card-site">City of Long Beach</span></a>
+<a class="link-card" href="https://crimegrade.org/violent-crime-los-altos-long-beach-ca/"><span class="link-card-title">CrimeGrade Los Altos, Long Beach</span><span class="link-card-site">CrimeGrade</span></a>
+<a class="link-card" href="https://crimegrade.org/violent-crime-the-plaza-long-beach-ca/"><span class="link-card-title">CrimeGrade The Plaza, Long Beach</span><span class="link-card-site">CrimeGrade</span></a>
+<a class="link-card" href="https://crimegrade.org/safest-places-in-mar-vista-los-angeles-ca/"><span class="link-card-title">CrimeGrade Mar Vista, Los Angeles</span><span class="link-card-site">CrimeGrade</span></a>
+<a class="link-card" href="https://crimegrade.org/safest-places-in-el-dorado-hills-ca/"><span class="link-card-title">CrimeGrade El Dorado Hills</span><span class="link-card-site">CrimeGrade</span></a>
+<a class="link-card" href="https://openjustice.doj.ca.gov/exploration/crime-statistics/crimes-clearances"><span class="link-card-title">OpenJustice Crimes and Clearances (files not retrieved)</span><span class="link-card-site">CA DOJ</span></a>
+<a class="link-card" href="https://eldoradosheriff.citizenrims.com/"><span class="link-card-title">El Dorado County Sheriff crime and activity feed</span><span class="link-card-site">EDSO</span></a>
+<a class="link-card" href="https://www.zillow.com/apartments/los-angeles-ca/geneva@pacific/By4k5d/"><span class="link-card-title">Geneva@Pacific rental listing, 3827 Frances Ave</span><span class="link-card-site">Zillow</span></a>
+<a class="link-card" href="https://showcase.realestatedigital.com/property-details/2658-knoxville-avenue-long-beach-ca-90815-l403456215"><span class="link-card-title">2658 Knoxville Ave sold May 21, 2025</span><span class="link-card-site">Showcase / MLS RS25060468</span></a>
+<a class="link-card" href="https://cursor.com/canvas/store-5231b487-c9bd-4184-b750-a5899564f408/12b64a23-b05a-4a93-8eca-82c4155afa8d"><span class="link-card-title">2001 Carfax Ave deep dive (existing Page)</span><span class="link-card-site">Page</span></a>
+</div>
+<p>Figures compiled Nov 22, 2026, Pacific Time. NeighborhoodScout was not retrieved. CrimeMapping.com and CommunityCrimeMap / LexisNexis were not used for counts. No address-level El Dorado Sheriff extract is in this Page. Census geocoder points can be off by a fraction of a 100-block. This is a public-records comparison, not a safety guarantee, inspection, or appraisal.</p>
+</section>
+
+      <footer class="criteria">
+        <p class="colophon"><a href="./index.html">Back to weekly digest</a></p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

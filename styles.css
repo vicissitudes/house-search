@@ -180,6 +180,12 @@ h1 {
 
 .nav a:hover { text-decoration: underline; }
 
+.reports-nav {
+  position: static;
+  border-bottom: none;
+  background: transparent;
+}
+
 .section, footer.criteria { margin: 2.6rem 0; scroll-margin-top: 7rem; }
 
 .kicker {

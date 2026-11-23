@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>2001 Carfax Ave deep dive</title>
+  <meta name="description" content="A same-year Tesoro Builders flip: bought May 15, 2026 for $925,000 as a 1,040 sqft house, now asking $1,495,000 as 2,015 sqft. The city’s closed addition permit is for 658 square feet, which does not add up to the listed living area.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .nav { top: 0; }
+    .section { scroll-margin-top: 4.5rem; }
+    .nameplate a {
+      color: inherit;
+      text-decoration: none;
+      letter-spacing: 0.14em;
+    }
+    .nameplate a:hover { text-decoration: underline; }
+    .section-caption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: -0.25rem 0 0.7rem;
+      max-width: 46rem;
+    }
+    .props {
+      display: grid;
+      grid-template-columns: 11.5rem 1fr;
+      gap: 0.35rem 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      margin: 0.85rem 0 1rem;
+      max-width: 46rem;
+    }
+    .props dt {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding-top: 0.2rem;
+    }
+    .props dd { margin: 0; }
+    .callout .lead {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 560;
+      margin: 0 0 0.35rem;
+    }
+    .proscons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin: 0.85rem 0 1.1rem;
+    }
+    .pros, .cons {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 0.9rem 1rem 1rem;
+    }
+    .pros { border-left: 5px solid var(--good); }
+    .cons { border-left: 5px solid var(--warn); }
+    .pros h3, .cons h3 { margin: 0 0 0.45rem; font-size: 1.15rem; }
+    .pros ul, .cons ul, .plain-list { margin: 0.2rem 0 0; padding-left: 1.15rem; }
+    .pros li, .cons li, .plain-list li { margin: 0.45rem 0; }
+    .link-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      gap: 0.7rem;
+      margin: 0.85rem 0 1rem;
+    }
+    .link-card {
+      display: block;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.8rem 0.95rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link-card:hover { border-color: var(--ink); }
+    .link-card-title {
+      color: var(--accent);
+      font-weight: 650;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .link-card-site {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .chart-block { margin: 0.9rem 0 1.15rem; max-width: 46rem; }
+    .chart-title {
+      margin: 0 0 0.45rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .bars { display: grid; gap: 0.65rem; }
+    .bar-row { display: grid; grid-template-columns: 8.2rem 1fr; gap: 0.55rem; align-items: start; }
+    .bar-label { font-size: 0.88rem; padding-top: 0.1rem; }
+    .bar-track {
+      background: #efe6d6;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 1.55rem;
+    }
+    .bar-fill {
+      background: var(--accent);
+      color: #fbf8f3;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.45rem;
+      border-radius: 8px;
+      min-width: 2.4rem;
+      box-sizing: border-box;
+    }
+    .bar-row.is-emphasis .bar-fill { background: var(--ink); }
+    .bar-meta { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; }
+    .line-chart { width: 100%; height: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+    .subhead {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 560;
+      margin: 1.35rem 0 0.45rem;
+    }
+    .view-block { margin: 0.4rem 0 1.2rem; }
+    footer.criteria .colophon { margin-top: 0.4rem; }
+    @media (max-width: 700px) {
+      .props { grid-template-columns: 1fr; gap: 0.15rem; }
+      .props dt { padding-top: 0.55rem; }
+      .props dt:first-child { padding-top: 0; }
+      .proscons { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; gap: 0.15rem; }
+      .link-cards { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to the report</a>
+  <main id="content">
+    <div class="wrap">
+      <header class="masthead">
+        <div class="nameplate">
+          <span>Personal search</span>
+          <a href="./index.html">Back to weekly digest</a>
+        </div>
+        <h1>2001 Carfax Ave, Long Beach</h1>
+        <p class="lede">A same-year Tesoro Builders flip: bought May 15, 2026 for $925,000 as a 1,040 sqft house, now asking $1,495,000 as 2,015 sqft. The city’s closed addition permit is for 658 square feet, which does not add up to the listed living area.</p>
+        <p class="prepared">Research compiled Nov 22, 2026 (Pacific Time). This is a public-records review, not an appraisal, inspection, or title report. Every figure is tied to a source; gaps are called out.</p>
+      </header>
+      <nav class="nav" aria-label="On this page">
+        <ul>
+          <li><a href="./index.html">Back to weekly digest</a></li><li><a href="#glance">At a glance</a></li><li><a href="#listing">Listing basics</a></li><li><a href="#price">The flip and price history</a></li><li><a href="#permits">Permits and the square-footage gap</a></li><li><a href="#taxes">Taxes and public records</a></li><li><a href="#inspection">Inspection and local concerns</a></li><li><a href="#crime">Crime</a></li><li><a href="#environment">Environmental hazards and airport noise</a></li><li><a href="#comps">Neighbors and comps</a></li><li><a href="#schools">Schools, walkability, commute</a></li><li><a href="#verdict">Red flags, questions, and verdict</a></li><li><a href="#sources">Sources</a></li>
+        </ul>
+      </nav>
+      <section class="section" id="glance">
+<h2>At a glance</h2>
+<div class="callout">
+<p class="lead">The listed 2,015 sqft does not match the permit math</p>
+<p>Long Beach’s official permit inquiry shows addition BADD338820, closed and finaled Sep 30, 2026, for “Add 658 sf to existing single family dwelling.” The pre-remodel public-record size was 1,040 sqft. 1,040 + 658 = 1,698, not the 2,015 sqft on the listing. The LA County Assessor record still shows 1,040 sqft, 3 bedrooms, and 1 bath. Get the Certificate of Occupancy and a measured/appraised living area before treating 2,015 as fact.</p>
+</div>
+<dl class="props">
+<dt>Status</dt><dd><span class="badge warn">Active</span></dd>
+<dt>List price</dt><dd>$1,495,000 ($742/sqft on listed 2,015; $880/sqft on 1,040+658)</dd>
+<dt>Zestimate</dt><dd>$1,477,700, as of Nov 22, 2026</dd>
+<dt>Listed size</dt><dd>4 bed / 3 bath / 2,015 sqft, one story</dd>
+<dt>Assessor size, 2025 roll</dt><dd>3 bed / 1 bath / 1,040 sqft</dd>
+<dt>Lot / year / HOA</dt><dd>5,820 sqft corner lot · 1953 · no HOA</dd>
+<dt>This listing</dt><dd>About 58–62 days on market; listed Sep 21, 2026 at $1,600,000</dd>
+<dt>Bought</dt><dd>$925,000 on May 15, 2026, then remodeled and relisted</dd>
+</dl>
+<p>Research compiled Nov 22, 2026 (Pacific Time). This is a public-records review, not an appraisal, inspection, or title report. Every figure is tied to a source; gaps are called out.</p>
+</section>
+<section class="section" id="listing">
+<h2>Listing basics</h2>
+<dl class="props">
+<dt>Address</dt><dd>2001 Carfax Ave, Long Beach, CA 90815, corner of Carfax and Los Santos</dd>
+<dt>Area</dt><dd>Los Altos / South of Fwy (LSF), MLS area 34 / X-100</dd>
+<dt>Type</dt><dd>Single-family, one story, custom/modern, no pool</dd>
+<dt>MLS</dt><dd>PW26203992 (CRMLS)</dd>
+<dt>List price</dt><dd>$1,495,000, cut Nov 5, 2026 from $1,550,000 and Oct 13 from $1,600,000</dd>
+<dt>Beds / baths</dt><dd>4 bedrooms and 3 full baths, all on the main level</dd>
+<dt>Living area</dt><dd>2,015 sqft on the listing. Source is not stated as Assessor. See permits.</dd>
+<dt>Lot</dt><dd>5,820 sqft (0.1336 acres), source: public records</dd>
+<dt>Year built</dt><dd>1953</dd>
+<dt>Garage</dt><dd>2-car attached, drywalled, epoxy floor, EV outlet</dd>
+<dt>HOA</dt><dd>None / $0</dd>
+<dt>Other fees</dt><dd>Listings show an other annual assessment of $389; confirm on the tax bill.</dd>
+<dt>Condition flags</dt><dd>Additions/Alterations, Building Permit, Updated/Remodeled</dd>
+<dt>Disclosures</dt><dd>Home warranty. Staging furniture excluded.</dd>
+<dt>APN</dt><dd>7231003020 (Lot 80)</dd>
+<dt>Listing agent</dt><dd>Grace Parris, Keller Williams Coastal Prop., DRE 01460379, (562) 338-3009</dd>
+<dt>Builder named</dt><dd>Tesoro Builders</dd>
+</dl>
+<p>The listing, consistent across Zillow, Hoffman Murphy, MyBeachTeam, and Willis Allen, describes a newly expanded and remodeled Tesoro Builders house: open plan with a vaulted ceiling; kitchen with island, engineered quartz, GE stainless appliances, and a Duro 36-inch six-burner range; primary suite with a sliding door to a tree-lined outdoor space and a porcelain-and-quartz bath; waterproof SPC vinyl floors; dual-pane windows; new 200-amp panel; all-new plumbing including water and sewer lines to the street clean-out; heat-pump HVAC; a new roof; new concrete deck and landscaping; interior laundry with a utility sink. Some listing versions say “see attached supplements: Certificate of Occupancy and Termite Completion.” Those supplements were not retrieved here.</p>
+<p>Current price and status were confirmed Nov 22, 2026 on Zillow (price cut $55,000 on Nov 5; 58 days on Zillow; 1,510 views; 129 saves), HomeFinder (62 days on MLS), Hoffman Murphy (updated Nov 22), and MyBeachTeam (58 days, last updated Nov 22). Realtor.com was geo-blocked from this environment. Redfin’s property page still showed the May 15, 2026 sale of the unexpanded 1,040 sqft house at $925,000 and a Redfin Estimate of $914,141; treat that estimate as stale and not a valuation of the remodeled house.</p>
+</section>
+<section class="section" id="price">
+<h2>The flip and price history</h2>
+<p class="section-caption">The May 2026 close is a sale. Later points on the listing chart are asking prices.</p>
+<p>This is a same-year flip. On Apr 24, 2026 the house was listed at $925,000 as a 3-bed, 1-bath, 1,040 sqft “prime opportunity” with cosmetic repairs needed, a roof permitted in 2023, a sewer line the then-listing said was installed in 2022, and dual-pane windows (Redfin / CRMLS PW26088201). It went contingent May 3, pending May 11, and closed May 15, 2026 at $925,000, 21 days after listing. The buyer’s agent was Grace Parris of Keller Williams Coastal Prop., the same agent now listing the remodeled house. The prior recorded sale was Jul 1, 1977 for $61,000.</p>
+<div class="view-block">
+<h3 class="subhead">2026 flip listing</h3>
+<div class="chart-block"><p class="chart-title">Price</p><svg class="line-chart" viewBox="0 0 700 260" role="img" aria-label="Price"><line x1="54" y1="20.0" x2="682" y2="20.0" stroke="#ddd3c3" stroke-width="1" /><text x="46" y="24.0" text-anchor="end" font-size="10" fill="#5f584e">$1.7M</text><line x1="54" y1="118.0" x2="682" y2="118.0" stroke="#ddd3c3" stroke-width="1" /><text x="46" y="122.0" text-anchor="end" font-size="10" fill="#5f584e">$1.25M</text><line x1="54" y1="216.0" x2="682" y2="216.0" stroke="#ddd3c3" stroke-width="1" /><text x="46" y="220.0" text-anchor="end" font-size="10" fill="#5f584e">$800k</text><polyline fill="none" stroke="#8f3b22" stroke-width="2.5" points="54.0,188.8 211.0,41.8 368.0,52.7 525.0,64.6 682.0,64.6" /><circle cx="54.0" cy="188.8" r="4.5" fill="#8f3b22" /><circle cx="211.0" cy="41.8" r="4.5" fill="#8f3b22" /><circle cx="368.0" cy="52.7" r="4.5" fill="#8f3b22" /><circle cx="525.0" cy="64.6" r="4.5" fill="#8f3b22" /><circle cx="682.0" cy="64.6" r="4.5" fill="#8f3b22" /><text x="54.0" y="178.8" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$925k</text><text x="54.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">May 15 sale</text><text x="211.0" y="31.8" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$1.6M</text><text x="211.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">Sep 21 list</text><text x="368.0" y="42.7" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$1.55M</text><text x="368.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">Oct 13 cut</text><text x="525.0" y="54.6" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$1.5M</text><text x="525.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">Nov 5 cut</text><text x="682.0" y="54.6" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$1.5M</text><text x="682.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">Nov 22</text></svg></div>
+</div>
+<div class="view-block">
+<h3 class="subhead">Sale history</h3>
+<div class="chart-block"><p class="chart-title">Sale price</p><svg class="line-chart" viewBox="0 0 700 260" role="img" aria-label="Sale price"><line x1="54" y1="20.0" x2="682" y2="20.0" stroke="#ddd3c3" stroke-width="1" /><text x="46" y="24.0" text-anchor="end" font-size="10" fill="#5f584e">$1.6M</text><line x1="54" y1="118.0" x2="682" y2="118.0" stroke="#ddd3c3" stroke-width="1" /><text x="46" y="122.0" text-anchor="end" font-size="10" fill="#5f584e">$800k</text><line x1="54" y1="216.0" x2="682" y2="216.0" stroke="#ddd3c3" stroke-width="1" /><text x="46" y="220.0" text-anchor="end" font-size="10" fill="#5f584e">$0k</text><polyline fill="none" stroke="#8f3b22" stroke-width="2.5" points="54.0,208.5 682.0,102.7" /><circle cx="54.0" cy="208.5" r="4.5" fill="#8f3b22" /><circle cx="682.0" cy="102.7" r="4.5" fill="#8f3b22" /><text x="54.0" y="198.5" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$61k</text><text x="54.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">1977</text><text x="682.0" y="92.7" text-anchor="middle" font-size="11" fill="#1c1915" font-weight="700">$925k</text><text x="682.0" y="246" text-anchor="middle" font-size="10" fill="#5f584e">May 2026</text></svg></div>
+</div>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Date</th><th>Event</th><th>Price</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td data-label="Date">Jul 1, 1977</td><td data-label="Event">Sold (public record)</td><td data-label="Price" class="num">$61,000</td><td data-label="Source">Redfin, HomeFinder</td></tr><tr><td data-label="Date">Apr 24, 2026</td><td data-label="Event">Listed, 3/1, 1,040 sqft</td><td data-label="Price" class="num">$925,000</td><td data-label="Source">Redfin / CRMLS PW26088201</td></tr><tr><td data-label="Date">May 15, 2026</td><td data-label="Event">Sold</td><td data-label="Price" class="num">$925,000</td><td data-label="Source">Redfin, Coldwell Banker, HomeFinder</td></tr><tr><td data-label="Date">Sep 20, 2026</td><td data-label="Event">Added to MLS PW26203992</td><td data-label="Price" class="num">$1,600,000</td><td data-label="Source">Willis Allen / CRMLS</td></tr><tr><td data-label="Date">Sep 21, 2026</td><td data-label="Event">Listed as 4/3, 2,015 sqft</td><td data-label="Price" class="num">$1,600,000</td><td data-label="Source">HomeFinder, MyBeachTeam</td></tr><tr><td data-label="Date">Sep 25, 2026</td><td data-label="Event">Status change to Active</td><td data-label="Price" class="num">$1,600,000</td><td data-label="Source">Willis Allen / CRMLS</td></tr><tr><td data-label="Date">Oct 13, 2026</td><td data-label="Event">Price cut</td><td data-label="Price" class="num">$1,550,000</td><td data-label="Source">HomeFinder, MyBeachTeam</td></tr><tr><td data-label="Date">Nov 5, 2026</td><td data-label="Event">Price cut</td><td data-label="Price" class="num">$1,495,000</td><td data-label="Source">Zillow, HomeFinder</td></tr><tr><td data-label="Date">Nov 22, 2026</td><td data-label="Event">Still active</td><td data-label="Price" class="num">$1,495,000</td><td data-label="Source">Zillow, Hoffman Murphy</td></tr></tbody>
+</table>
+</div>
+<p>The current ask is $570,000, or about 62%, above the May purchase, after $105,000 of cuts from the September ask. The remodeled listing hit the MLS around Sep 20–25, which is before the city’s posted final date of Sep 30, 2026 on addition permit BADD338820. Ask when the Certificate of Occupancy was actually issued, and whether the house was marketed before the permit was finaled.</p>
+</section>
+<section class="section" id="permits">
+<h2>Permits and the square-footage gap</h2>
+<p>Permits were pulled from the City of Long Beach official Address Project Inquiry at <a href="https://rose.longbeach.gov/HPLandMgmt/PB/SitusInquiry.asp">https://rose.longbeach.gov/HPLandMgmt/PB/SitusInquiry.asp</a> (the tool embedded on the Permit Status Inquiry page). Search used number 2001 and street name Carfax, as the city instructs (no prefix or suffix). No holds were found. The older Inspection History tool did not return inspection line-items for the current project numbers. The Certificate of Occupancy document itself was not retrieved from citydocs/Laserfiche.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Project</th><th>Description</th><th>Status / final</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td data-label="Project">BADD338820, Addition</td><td data-label="Description">Add 658 sf to existing single family dwelling. Add new kitchen, family room, two (2) bathrooms, and laundry. Remodel bathroom. Install HVAC system.</td><td data-label="Status / final">Closed, final 9/30/2026</td><td data-label="Source">Long Beach Situs Inquiry</td></tr><tr><td data-label="Project">BRRF294662, Building reroof SFD/duplex</td><td data-label="Description">Express online permitting: reroof main dwelling and garage with composition shingles (asphalt), 2380</td><td data-label="Status / final">Closed, final 8/10/2023</td><td data-label="Source">Long Beach Situs Inquiry</td></tr><tr><td data-label="Project">CEFR296472, Foreclosure Registry Program</td><td data-label="Description">Foreclosure Registry Program</td><td data-label="Status / final">Closed, final 3/27/2025</td><td data-label="Source">Long Beach Situs Inquiry</td></tr><tr><td data-label="Project">00089227 (archived)</td><td data-label="Description">Remove existing; reroof with 20-year composition shingles</td><td data-label="Status / final">Final 10/31/1990</td><td data-label="Source">Archived Situs Inquiry</td></tr><tr><td data-label="Project">00170587 (archived)</td><td data-label="Description">Install 80 ft by 6 ft of block wall fence</td><td data-label="Status / final">Final 6/03/1994</td><td data-label="Source">Archived Situs Inquiry</td></tr></tbody>
+</table>
+</div>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Square-footage check</th><th>Figure</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td data-label="Square-footage check">Public-record / assessor living area before this remodel</td><td data-label="Figure" class="num">1,040 sqft</td><td data-label="Source">Redfin public record, May 2026 listing</td></tr><tr><td data-label="Square-footage check">Addition permitted in BADD338820</td><td data-label="Figure" class="num">658 sqft</td><td data-label="Source">Long Beach Situs Inquiry</td></tr><tr><td data-label="Square-footage check">1,040 + 658</td><td data-label="Figure" class="num">1,698 sqft</td><td data-label="Source">Arithmetic</td></tr><tr><td data-label="Square-footage check">Current listing living area</td><td data-label="Figure" class="num">2,015 sqft</td><td data-label="Source">MLS PW26203992</td></tr><tr><td data-label="Square-footage check">Gap, listing minus 1,040 + 658</td><td data-label="Figure" class="num">317 sqft</td><td data-label="Source">Arithmetic</td></tr><tr><td data-label="Square-footage check">Assessor living area still shown</td><td data-label="Figure" class="num">1,040 sqft, 3 bed / 1 bath</td><td data-label="Source">Redfin public record / tax rolls</td></tr></tbody>
+</table>
+</div>
+<p>The addition permit is real, closed, and includes the kitchen, family room, two new bathrooms, laundry, a remodeled bathroom, and HVAC, which supports the listing’s remodel story. What it does not support, on its face, is 2,015 sqft. A buyer should compare the C of O and approved plans to a tape or appraisal. No separate 2026 reroof, electrical-panel, or plumbing permit appeared in this official inquiry; those items may have been scoped under BADD338820, but that is not documented in the short description. The current listing calls the roof “new,” while the only reroof permit found was finaled Aug 10, 2023, before this owner bought the house. The April 2026 listing’s “sewer line in 2022” also has no matching standalone permit in this search.</p>
+<p>Tesoro Builders Inc holds California CSLB license 1147207, Class B general building. Secondary license directories report status CLEAR, issued Dec 4, 2025, expiring Dec 31, 2027, with a Redlands locality and Pablo Velasco as the responsible managing officer. Confirm on <a href="https://cslb.ca.gov/">https://cslb.ca.gov/</a>. The license was only a few months old when this project was built. Grace Parris both bought the property as buyer’s agent in May and is the listing agent now; ask whether she or an affiliated entity is the seller.</p>
+</section>
+<section class="section" id="taxes">
+<h2>Taxes and public records</h2>
+<p>APN 7231003020. Official roll figures should be confirmed at <a href="https://portal.assessor.lacounty.gov/">https://portal.assessor.lacounty.gov/</a>. Redfin’s public-record tax table and HomeFinder’s tax table disagree slightly on the latest year label. Redfin shows 2025 tax $2,659 on assessed $178,817 (land $71,479, improvements $107,338). HomeFinder shows 2025 tax $2,658 on assessed $182,392 (land $72,908, improvements $109,484), and 2024 at $178,817. $182,392 is exactly a 2% Prop 13 increase from $178,817, so HomeFinder’s “2025” row may be the newer roll. In either case, the enrolled value is still the old long-term-owner base, not the $925,000 May 2026 sale or the new addition.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Year (HomeFinder)</th><th>Tax</th><th>Assessed</th><th>Land</th><th>Improvements</th></tr></thead>
+<tbody>
+<tr><td data-label="Year (HomeFinder)">2025</td><td data-label="Tax" class="num">$2,658</td><td data-label="Assessed" class="num">$182,392</td><td data-label="Land" class="num">$72,908</td><td data-label="Improvements" class="num">$109,484</td></tr><tr><td data-label="Year (HomeFinder)">2024</td><td data-label="Tax" class="num">$2,560</td><td data-label="Assessed" class="num">$178,817</td><td data-label="Land" class="num">$71,479</td><td data-label="Improvements" class="num">$107,338</td></tr><tr><td data-label="Year (HomeFinder)">2023</td><td data-label="Tax" class="num">$2,522</td><td data-label="Assessed" class="num">$171,875</td><td data-label="Land" class="num">$68,704</td><td data-label="Improvements" class="num">$103,171</td></tr><tr><td data-label="Year (HomeFinder)">2022</td><td data-label="Tax" class="num">$2,380</td><td data-label="Assessed" class="num">$168,506</td><td data-label="Land" class="num">$67,357</td><td data-label="Improvements" class="num">$101,149</td></tr><tr><td data-label="Year (HomeFinder)">2021</td><td data-label="Tax" class="num">$2,334</td><td data-label="Assessed" class="num">$165,203</td><td data-label="Land" class="num">$66,037</td><td data-label="Improvements" class="num">$99,166</td></tr><tr><td data-label="Year (HomeFinder)">2019</td><td data-label="Tax" class="num">$2,300</td><td data-label="Assessed" class="num">$160,305</td><td data-label="Land" class="num">$64,079</td><td data-label="Improvements" class="num">$96,226</td></tr></tbody>
+</table>
+</div>
+<p>The May 2026 change in ownership at $925,000 starts a new Prop 13 base year, and the permitted addition will also be assessed. A buyer at $1,495,000 should expect the tax bill to be reset near the purchase price, plus any special assessments (listings show $389 other annual assessment), not remain near $2,658. That is a large jump. The city’s Foreclosure Registry case CEFR296472 was closed Mar 27, 2025, before this sale. TopHap still displayed a “pre-foreclosure (NOD)” flag; treat that as something to clear on a current title report, not as proof of a live foreclosure against the present owner.</p>
+</section>
+<section class="section" id="inspection">
+<h2>Inspection and local concerns</h2>
+<p>No public inspection report was found, other than the listing’s claim that a termite-completion supplement is attached. The house is a brand-new addition and full systems remodel, finaled Sep 30, 2026, and is already back on the market. That is short seasoning. A buyer still needs an independent inspection, sewer scope, roof review (2023 reroof versus “new roof” claim), and a look at the addition’s foundation and drainage, especially because the parcel is in a mapped liquefaction zone.</p>
+<ul class="plain-list">
+<li>Liquefaction. LA County hazard GIS places this point in a California Geological Survey liquefaction zone (Los Alamitos quad, zone released Mar 25, 1999). That matters for a 2026 addition. Ask for the soils report used in plan check.</li>
+<li>Airport. The house is about 2.63 miles from Long Beach Airport at 4100 Donald Douglas Dr (Census geocoder). A parcel-level official 65 CNEL contour was not opened this turn. Secondary noise-map writeups say Los Altos south of the 405 is outside the 65 CNEL contour. Visit during flight hours and check <a href="https://longbeach.gov/lgb/community-information/noise-abatement">https://longbeach.gov/lgb/community-information/noise-abatement</a>.</li>
+<li>Freeway. The subdivision name is Los Altos/South of Fwy. The 405 is nearby; drive-by at rush hour rather than relying on a listing’s “tree-lined” description.</li>
+</ul>
+</section>
+<section class="section" id="crime">
+<h2>Crime</h2>
+<p>Official LBPD incident records were pulled for two windows: the prior year (date_reported Nov 1, 2024 through Nov 1, 2025) and the latest year (Nov 1, 2025 through Nov 1, 2026, the last date in the city’s open dataset when this was queried). Both endpoints are inclusive, so Nov 1, 2025 appears in each window. That one-day overlap does not change the 0.25- or 0.5-mile counts (zero locatable records that day in either radius). Citywide, 74 records on Nov 1, 2025 are in both totals and do not change the direction of the citywide decline. The feed is published with a 21-day delay (LBPD Crime Dashboard announcement, Dec 4, 2025). Counts are reported records, not unique events. Addresses are 100-block anonymized; distances use Census-geocoded block points to 33.79236, −118.11003. Sexual-assault addresses are redacted, so those records cannot be placed in a radius.</p>
+<div class="view-block">
+<h3 class="subhead">0.25 mile</h3>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Prior year</th><th>Latest year</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">Violent (incl. simple assault / intimidation)</td><td data-label="Prior year" class="num">7</td><td data-label="Latest year" class="num">7</td><td data-label="Change" class="num">0</td></tr><tr><td data-label="Type">UCR-style violent (subset)</td><td data-label="Prior year" class="num">1</td><td data-label="Latest year" class="num">4</td><td data-label="Change" class="num">+3</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Prior year" class="num">2</td><td data-label="Latest year" class="num">2</td><td data-label="Change" class="num">0</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Prior year" class="num">3</td><td data-label="Latest year" class="num">5</td><td data-label="Change" class="num">+2</td></tr><tr><td data-label="Type">Theft (other larceny)</td><td data-label="Prior year" class="num">2</td><td data-label="Latest year" class="num">7</td><td data-label="Change" class="num">+5</td></tr><tr><td data-label="Type">Other</td><td data-label="Prior year" class="num">0</td><td data-label="Latest year" class="num">3</td><td data-label="Change" class="num">+3</td></tr><tr><td data-label="Type">Total locatable records</td><td data-label="Prior year" class="num">14</td><td data-label="Latest year" class="num">24</td><td data-label="Change" class="num">+10</td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="view-block">
+<h3 class="subhead">0.5 mile</h3>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Prior year</th><th>Latest year</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">Violent (incl. simple assault / intimidation)</td><td data-label="Prior year" class="num">20</td><td data-label="Latest year" class="num">12</td><td data-label="Change" class="num">−8 (−40%)</td></tr><tr><td data-label="Type">UCR-style violent (subset)</td><td data-label="Prior year" class="num">3</td><td data-label="Latest year" class="num">6</td><td data-label="Change" class="num">+3</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Prior year" class="num">3</td><td data-label="Latest year" class="num">3</td><td data-label="Change" class="num">0</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Prior year" class="num">13</td><td data-label="Latest year" class="num">17</td><td data-label="Change" class="num">+4 (+31%)</td></tr><tr><td data-label="Type">Theft (other larceny)</td><td data-label="Prior year" class="num">14</td><td data-label="Latest year" class="num">29</td><td data-label="Change" class="num">+15 (+107%)</td></tr><tr><td data-label="Type">Other</td><td data-label="Prior year" class="num">9</td><td data-label="Latest year" class="num">9</td><td data-label="Change" class="num">0</td></tr><tr><td data-label="Type">Total locatable records</td><td data-label="Prior year" class="num">59</td><td data-label="Latest year" class="num">70</td><td data-label="Change" class="num">+11 (+19%)</td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="view-block">
+<h3 class="subhead">Citywide</h3>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Type</th><th>Prior year</th><th>Latest year</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td data-label="Type">Violent (incl. simple assault / intimidation)</td><td data-label="Prior year" class="num">9,635</td><td data-label="Latest year" class="num">9,314</td><td data-label="Change" class="num">−321 (−3.3%)</td></tr><tr><td data-label="Type">UCR-style violent (subset)</td><td data-label="Prior year" class="num">3,340</td><td data-label="Latest year" class="num">3,159</td><td data-label="Change" class="num">−181 (−5.4%)</td></tr><tr><td data-label="Type">Burglary</td><td data-label="Prior year" class="num">2,154</td><td data-label="Latest year" class="num">1,800</td><td data-label="Change" class="num">−354 (−16%)</td></tr><tr><td data-label="Type">Vehicle break-in / auto theft</td><td data-label="Prior year" class="num">4,793</td><td data-label="Latest year" class="num">3,523</td><td data-label="Change" class="num">−1,270 (−26%)</td></tr><tr><td data-label="Type">Theft (other larceny)</td><td data-label="Prior year" class="num">5,700</td><td data-label="Latest year" class="num">4,780</td><td data-label="Change" class="num">−920 (−16%)</td></tr><tr><td data-label="Type">Other</td><td data-label="Prior year" class="num">6,967</td><td data-label="Latest year" class="num">5,434</td><td data-label="Change" class="num">−1,533 (−22%)</td></tr><tr><td data-label="Type">Total records</td><td data-label="Prior year" class="num">29,249</td><td data-label="Latest year" class="num">24,851</td><td data-label="Change" class="num">−4,398 (−15%)</td></tr></tbody>
+</table>
+</div>
+</div>
+<p>Source: DataLB dataset “LBPD Criminal Incident Data,” queried Nov 22, 2026 (data processed 8:00 a.m. PT that day), at <a href="https://data.longbeach.gov/explore/dataset/lbpd-criminal-incident-data/information/">https://data.longbeach.gov/explore/dataset/lbpd-criminal-incident-data/information/</a>, using the same NIBRS buckets and radii as the latest-year counts. The 2000 block of Carfax had zero records in both windows. The only 2000 Carfax record in the 2023–present file remains a motor-vehicle theft on Jun 24, 2023. A single prior-year auto burglary was reported on the 2300 block of Carfax on Dec 7, 2024, 0.49 mile north of the house.</p>
+<p>Year over year, Long Beach as a whole fell from 29,249 to 24,851 records (−15%), with the steepest drop in vehicle-related records (−26%). Inside 0.5 mile the opposite happened on property crime: locatable records rose from 59 to 70 (+19%), theft went from 14 to 29, and vehicle-related records went from 13 to 17. Vehicle-related share inside 0.5 mile stayed high (13 of 59, or 22%, then 17 of 70, or 24%) while the citywide vehicle share fell from 16% to 14%. Broad violent records inside 0.5 mile fell from 20 to 12 (−40%), mostly a drop in simple assault (17 to 4). UCR-style violent records in that radius rose from 3 to 6; those are small counts and should not be read as a solid rate change. Inside 0.25 mile the total rose from 14 to 24, a small base, with violent counts flat at 7 but a shift toward more aggravated-assault records (1 to 4). Burglary was unchanged in both radii (2 and 3). The latest-year theft increase may include some vehicle-parts cases labeled as grand or petty theft in open data.</p>
+<p>Latest-year radius totals still exclude three sex-offense records in the home’s reporting district (RD 634) whose addresses were redacted: a rape at a commercial location on Feb 16, 2026, and two fondling records (one residential, one commercial) on Mar 29 and Apr 23, 2026. In the prior year, RD 634 had no sex-offense records in this dataset, but five sex-offense records in the seven nearby reporting districts used for geocoding were redacted (RDs 631, 632, 633, and 653) and also could not be distance-filtered. Official unit totals, not radius-filtered: RD 634 went from 109 to 124 records; Beat 15 went from 484 to 441.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Area</th><th>Records</th><th>UCR-style violent</th><th>Vehicle-related</th></tr></thead>
+<tbody>
+<tr><td data-label="Area">0.25-mile radius (locatable)</td><td data-label="Records" class="num">24</td><td data-label="UCR-style violent" class="num">4</td><td data-label="Vehicle-related" class="num">5</td></tr><tr><td data-label="Area">0.5-mile radius (locatable)</td><td data-label="Records" class="num">70</td><td data-label="UCR-style violent" class="num">6</td><td data-label="Vehicle-related" class="num">17</td></tr><tr><td data-label="Area">Reporting district 634 (includes this house)</td><td data-label="Records" class="num">124</td><td data-label="UCR-style violent" class="num">13</td><td data-label="Vehicle-related" class="num">16</td></tr><tr><td data-label="Area">Beat 15 (includes this house)</td><td data-label="Records" class="num">441</td><td data-label="UCR-style violent" class="num">41</td><td data-label="Vehicle-related" class="num">53</td></tr><tr><td data-label="Area">East Division (much larger than Los Altos)</td><td data-label="Records" class="num">6,782</td><td data-label="UCR-style violent" class="num">596</td><td data-label="Vehicle-related" class="num">971</td></tr><tr><td data-label="Area">City of Long Beach</td><td data-label="Records" class="num">24,851</td><td data-label="UCR-style violent" class="num">3,159</td><td data-label="Vehicle-related" class="num">3,523</td></tr></tbody>
+</table>
+</div>
+<p>LBPD does not publish a Los Altos neighborhood total. RD 634 and Beat 15 are the official units that contain 2001 Carfax. Vehicle-related share inside 0.5 mile (17 of 70 records) is higher than the citywide share (3,523 of 24,851). UCR-style violent share inside 0.5 mile (6 of 70) is slightly below the citywide share (3,159 of 24,851). UCR-style here means murder and nonnegligent manslaughter, rape, robbery, and aggravated assault. Broad “Violent” also includes simple assault, intimidation, other sex offenses, additional homicide categories, and kidnapping. Vehicle-related in this table is NIBRS motor-vehicle theft plus auto burglary. Open data often labels catalytic-converter or parts theft as grand or petty theft, so the Theft row may include some vehicle-parts cases.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Date reported</th><th>Record</th><th>100-block</th><th>Miles</th></tr></thead>
+<tbody>
+<tr><td data-label="Date reported">Nov 5, 2024</td><td data-label="Record">Burglary — residential</td><td data-label="100-block">6400 Bayard St</td><td data-label="Miles" class="num">0.15</td></tr><tr><td data-label="Date reported">Dec 7, 2024</td><td data-label="Record">Auto burglary</td><td data-label="100-block">2300 Carfax Ave</td><td data-label="Miles" class="num">0.49</td></tr><tr><td data-label="Date reported">Feb 10, 2025</td><td data-label="Record">Petty theft</td><td data-label="100-block">6200 Los Santos Dr</td><td data-label="Miles" class="num">0.09</td></tr><tr><td data-label="Date reported">Feb 11, 2025</td><td data-label="Record">Burglary — residential</td><td data-label="100-block">6400 El Paseo St</td><td data-label="Miles" class="num">0.19</td></tr><tr><td data-label="Date reported">Feb 12, 2025</td><td data-label="Record">Aggravated assault</td><td data-label="100-block">2200 Farolito Ave</td><td data-label="Miles" class="num">0.23</td></tr><tr><td data-label="Date reported">Mar 22, 2025</td><td data-label="Record">Motor vehicle theft</td><td data-label="100-block">Palo Verde Ave &amp; Los Santos Dr</td><td data-label="Miles" class="num">0.12</td></tr><tr><td data-label="Date reported">May 18–23, 2025</td><td data-label="Record">Three simple-assault records (two on May 18)</td><td data-label="100-block">6400 Stearns St (commercial)</td><td data-label="Miles" class="num">0.24</td></tr><tr><td data-label="Date reported">May 30, 2025</td><td data-label="Record">Residential burglary, grand theft, and stolen property (three records)</td><td data-label="100-block">6400 El Roble St</td><td data-label="Miles" class="num">0.38</td></tr><tr><td data-label="Date reported">Oct 25, 2025</td><td data-label="Record">Simple assault</td><td data-label="100-block">6200 Los Santos Dr</td><td data-label="Miles" class="num">0.09</td></tr></tbody>
+</table>
+</div>
+<p>Prior-year notable records, above, include the closest activity to the house: a petty theft and a simple assault on the 6200 block of Los Santos (0.09 mi) and a motor-vehicle theft at Palo Verde and Los Santos (0.12 mi). The only same-street record in either year is the Dec 7, 2024 auto burglary on the 2300 block of Carfax (0.49 mi). Two residential burglaries landed inside 0.25 mile that year (Bayard and El Paseo). Same-day, same-block pairs may be related offenses, not always separate events.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Date reported</th><th>Record</th><th>100-block</th><th>Miles</th></tr></thead>
+<tbody>
+<tr><td data-label="Date reported">Dec 1, 2025</td><td data-label="Record">Burglary — residential</td><td data-label="100-block">2000 Snowden Ave</td><td data-label="Miles" class="num">0.09</td></tr><tr><td data-label="Date reported">Feb 7, 2026</td><td data-label="Record">Aggravated assault</td><td data-label="100-block">2000 Palo Verde Ave</td><td data-label="Miles" class="num">0.12</td></tr><tr><td data-label="Date reported">Feb 16, 2026</td><td data-label="Record">Motor vehicle theft</td><td data-label="100-block">2000 Conquista Ave</td><td data-label="Miles" class="num">0.06</td></tr><tr><td data-label="Date reported">Apr 13, 2026</td><td data-label="Record">Aggravated assault</td><td data-label="100-block">6400 Stearns St (commercial)</td><td data-label="Miles" class="num">0.24</td></tr><tr><td data-label="Date reported">Jul 7, 2026</td><td data-label="Record">Commercial burglary and vandalism (two records)</td><td data-label="100-block">1900 Palo Verde Ave</td><td data-label="Miles" class="num">0.16</td></tr><tr><td data-label="Date reported">Jul 24, 2026</td><td data-label="Record">Motor vehicle theft and grand theft (two records)</td><td data-label="100-block">2000 Snowden Ave</td><td data-label="Miles" class="num">0.09</td></tr><tr><td data-label="Date reported">Aug 15, 2026</td><td data-label="Record">Two aggravated-assault records; the official map shows one event at 8:31 p.m.</td><td data-label="100-block">6300 Stearns St</td><td data-label="Miles" class="num">0.22</td></tr><tr><td data-label="Date reported">Sep 19, 2026</td><td data-label="Record">Motor vehicle theft</td><td data-label="100-block">6400 Fairbrook St</td><td data-label="Miles" class="num">0.14</td></tr><tr><td data-label="Date reported">Oct 26, 2026</td><td data-label="Record">Motor vehicle theft</td><td data-label="100-block">2100 Palo Verde Ave</td><td data-label="Miles" class="num">0.18</td></tr></tbody>
+</table>
+</div>
+<p>Latest-year notable records, above: the closest locatable records are on the 2000 blocks of Conquista (0.06 mi) and Snowden (0.09 mi). The only residential burglary inside 0.5 mile in the latest year was that Dec 1, 2025 Snowden case; the other two burglaries in the half-mile were commercial, on Palo Verde. No locatable robbery, homicide, or rape fell inside 0.5 mile in either year. Several assaults sit toward the Stearns / Palo Verde commercial edge rather than on Carfax itself.</p>
+<p>The official LBPD Crime Incident Mapping Application (RMS, updated weekly, typically the past six months) was also queried spatially at <a href="https://longbeach.gov/police/crime-info/crime-incidents">https://longbeach.gov/police/crime-info/crime-incidents</a> and <a href="https://experience.arcgis.com/experience/4edf8be3d86a4d35bd20f17735441038">https://experience.arcgis.com/experience/4edf8be3d86a4d35bd20f17735441038</a>. The layer’s citywide dates were May 20, 2026, 12:17 a.m. PT through Nov 17, 2026, 11:18 p.m. PT. Inside 0.5 mile it showed 34 points from May 20 through Oct 30, 2026, and no additional points after Oct 30. Of those 34, 23 were vehicle-related, including 11 motor-vehicle thefts and 11 “theft of motor vehicle parts or accessories,” plus one theft from a motor vehicle. Inside 0.25 mile: 13 points, 9 of them vehicle-related. Type labels differ from the 12-month NIBRS open data and should not be added together.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Area</th><th>Finding</th><th>As of</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td data-label="Area">Los Altos, Long Beach</td><td data-label="Finding">Overall B, violent A- (about 8.0 violent crimes per 1,000, 40% below the U.S. and 54% below Long Beach as a whole), property C-</td><td data-label="As of">Updated November 2026</td><td data-label="Source">CrimeGrade</td></tr><tr><td data-label="Area">Long Beach as a whole</td><td data-label="Finding">CrimeGrade grades citywide violent crime C+. It also reports citywide reported violent crime up 29% since 2019.</td><td data-label="As of">Updated November 2026</td><td data-label="Source">CrimeGrade</td></tr></tbody>
+</table>
+</div>
+<p>Los Altos still grades as one of the safer Long Beach neighborhoods for violent crime on CrimeGrade’s modeled scale; property crime is the weaker grade. Those are neighborhood estimates, not official counts for this corner. Official records around 2001 Carfax are consistent with a quieter residential pocket whose main local pattern is vehicle and vehicle-parts crime on surrounding streets, with a small number of assaults nearer Stearns and Palo Verde.</p>
+<p>What this means for a buyer: the 2000 block of Carfax itself was quiet in both years. Citywide records fell about 15%, including a sharp drop in vehicle crime, but this half-mile did not follow that property-crime decline — theft and auto theft/break-ins rose, and that remains the practical risk to underwrite, along with ordinary awareness near the Stearns commercial edge. Broad violent records nearby fell, mostly simple assaults, while a handful of aggravated assaults in the latest year keep that from being a clean “safer” story; those counts are small. Check the official map again before closing — open data lags about 21 days, addresses are anonymized to the 100-block, and sex-offense records in nearby districts (including three in RD 634 in the latest year) could not be located. Standard habits (lighting, cameras, not leaving valuables in cars) matter more than a violent-crime narrative.</p>
+<p>NeighborhoodScout was not retrieved. CrimeMapping.com, CommunityCrimeMap / LexisNexis, and SpotCrime were not used for counts; no complete, citeable address-level extract from those third-party maps was obtained. Official LBPD open data and the official incident map were used instead. Nov 2–22, 2026 is not in the open dataset; the map layer extends through Nov 17, 2026 but showed no additional incidents inside 0.5 mile after Oct 30.</p>
+</section>
+<section class="section" id="environment">
+<h2>Environmental hazards and airport noise</h2>
+<p>Hazard findings use LA County GIS layers at the Census-geocoded point 33.79236, −118.11003, plus CalEnviroScreen 4.0 for tract 5743 (GEOID 06037574300). Confirm flood status at <a href="https://msc.fema.gov/portal/search">https://msc.fema.gov/portal/search</a>. A property-specific EnviroStor / GeoTracker radius search was not completed; run the address at <a href="https://geotracker.waterboards.ca.gov/">https://geotracker.waterboards.ca.gov/</a> and <a href="https://www.envirostor.dtsc.ca.gov/public/">https://www.envirostor.dtsc.ca.gov/public/</a>.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Topic</th><th>Finding</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td data-label="Topic">Flood (county layers)</td><td data-label="Finding">Point did not intersect the county 100-year or 500-year flood-plain layers.</td><td data-label="Source">LA County GIS, layers 11 and 12</td></tr><tr><td data-label="Topic">Dam inundation</td><td data-label="Finding">Point is inside the Prado Dam inundation area (earth fill, Army Corps). This is residual catastrophic-failure risk, not a typical riverine flood zone.</td><td data-label="Source">LA County GIS, layer 14</td></tr><tr><td data-label="Topic">Fire</td><td data-label="Finding">Local Responsibility Area, class NonWildland, not in a mapped Fire Hazard Severity Zone (layer revised Aug 21, 2025).</td><td data-label="Source">LA County GIS, layers 1, 2, 18</td></tr><tr><td data-label="Topic">Earthquake / fault</td><td data-label="Finding">Point did not intersect Alquist-Priolo traces or zones, or the county USGS fault layer.</td><td data-label="Source">LA County GIS, layers 4, 5, 17</td></tr><tr><td data-label="Topic">Liquefaction</td><td data-label="Finding">Inside a mapped liquefaction zone, Los Alamitos quad, released Mar 25, 1999.</td><td data-label="Source">LA County GIS, layer 9</td></tr><tr><td data-label="Topic">Landslide / tsunami</td><td data-label="Finding">Point did not intersect those county layers.</td><td data-label="Source">LA County GIS, layers 7, 8</td></tr><tr><td data-label="Topic">LGB noise</td><td data-label="Finding">About 2.63 miles from 4100 Donald Douglas Dr. Official parcel-level 65 CNEL not confirmed here.</td><td data-label="Source">Census geocoder; LGB noise page</td></tr></tbody>
+</table>
+</div>
+<p>CalEnviroScreen 4.0 for tract 6037574300, ZIP 90815, population 6,052: overall score 13.87, 23rd percentile statewide (20–25% range). That low overall score is driven by very low population-characteristic percentiles (7th). Pollution burden is high: 84th percentile statewide. The standouts are toxic releases (97th), traffic (82nd), cleanup sites (80th), hazardous waste (78th), impaired water bodies (77th), lead (72nd), diesel PM (68th), and PM2.5 at 11.60 µg/m³ (63rd). This is a relatively advantaged neighborhood with a heavy industrial-and-traffic pollution burden in the official file.</p>
+</section>
+<section class="section" id="comps">
+<h2>Neighbors and comps</h2>
+<p class="section-caption">Subject $/sqft uses the listed 2,015 sqft unless noted. Neighbor estimates are not sales.</p>
+<p>Adjacent and nearby Carfax houses are still mostly original-scale 1,050–1,600 sqft homes. HomeFinder value estimates, not sales, included 2009 Carfax at about $1,119,900 (3/2, 1,180 sqft) and 2000 Carfax at about $1,386,732 (4/2.5, 2,086 sqft). Closed sales are the better guide.</p>
+<div class="chart-block"><div class="bars">
+<div class="bar-row"><div class="bar-label">2306 Carfax<span class="bar-meta">sold $1,105,000 · 1,130 sqft · Mar 2026</span></div><div class="bar-track"><div class="bar-fill" style="width:100%">$978</div></div></div>
+<div class="bar-row"><div class="bar-label">2009 Carfax<span class="bar-meta">sold $1,054,000 · 1,180 sqft · Mar 2024</span></div><div class="bar-track"><div class="bar-fill" style="width:91%">$893</div></div></div>
+<div class="bar-row"><div class="bar-label">Subject on 1,698<span class="bar-meta">ask $1,495,000 if size is 1,040+658</span></div><div class="bar-track"><div class="bar-fill" style="width:90%">$880</div></div></div>
+<div class="bar-row"><div class="bar-label">1820 Carfax<span class="bar-meta">sold $1,300,000 · 1,597 sqft · Jul 2025</span></div><div class="bar-track"><div class="bar-fill" style="width:83%">$814</div></div></div>
+<div class="bar-row"><div class="bar-label">Subject listed size<span class="bar-meta">ask $1,495,000 · 2,015 sqft</span></div><div class="bar-track"><div class="bar-fill" style="width:76%">$742</div></div></div>
+<div class="bar-row is-emphasis"><div class="bar-label">2279 Carfax<span class="bar-meta">sold $880,000 · 1,209 sqft · Dec 2024</span></div><div class="bar-track"><div class="bar-fill" style="width:74%">$728</div></div></div>
+<div class="bar-row"><div class="bar-label">2201 Carfax<span class="bar-meta">sold $1,300,000 · 1,795 sqft · Oct 2024</span></div><div class="bar-track"><div class="bar-fill" style="width:74%">$724</div></div></div>
+<div class="bar-row"><div class="bar-label">6320 E Los Santos<span class="bar-meta">sold $1,412,000 · 2,034 sqft · Jul 2025</span></div><div class="bar-track"><div class="bar-fill" style="width:71%">$694</div></div></div>
+</div></div>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>Home</th><th>Close / status</th><th>Size</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td data-label="Home">2001 Carfax (subject)</td><td data-label="Close / status">$1,495,000 list</td><td data-label="Size">Listed 4/3 · 2,015 · $742/sqft</td><td data-label="Notes">Flip; permitted addition 658 sf</td></tr><tr><td data-label="Home">6320 E Los Santos</td><td data-label="Close / status">$1,412,000, Jul 14, 2025</td><td data-label="Size">4/3 · 2,034 · $694/sqft</td><td data-label="Notes">Same LSF area, remodeled, sold over $1,300,000 ask</td></tr><tr><td data-label="Home">1811 Tevis</td><td data-label="Close / status">$1,395,000 or $1,420,000, Jun 6, 2025</td><td data-label="Size">5/2 · 2,018 sqft</td><td data-label="Notes">Remodeled; RE/MAX page shows both figures, confirm deed</td></tr><tr><td data-label="Home">1820 Carfax</td><td data-label="Close / status">$1,300,000, Jul 8, 2025</td><td data-label="Size">1,597 sqft · $814/sqft</td><td data-label="Notes">Same street</td></tr><tr><td data-label="Home">2201 Carfax</td><td data-label="Close / status">$1,300,000, Oct 21, 2024</td><td data-label="Size">1,795 sqft · $724/sqft</td><td data-label="Notes">Same street</td></tr><tr><td data-label="Home">2306 Carfax</td><td data-label="Close / status">$1,105,000, Mar 25, 2026</td><td data-label="Size">1,130 sqft · $978/sqft</td><td data-label="Notes">Unexpanded, just before this flip purchase</td></tr><tr><td data-label="Home">2009 Carfax</td><td data-label="Close / status">$1,054,000, Mar 22, 2024</td><td data-label="Size">3/2 · 1,180 · $893/sqft</td><td data-label="Notes">Near neighbor, unexpanded scale</td></tr><tr><td data-label="Home">2279 Carfax</td><td data-label="Close / status">$880,000, Dec 17, 2024</td><td data-label="Size">1,209 sqft · $728/sqft</td><td data-label="Notes">Same street</td></tr><tr><td data-label="Home">2001 Carfax, May 2026</td><td data-label="Close / status">$925,000, May 15, 2026</td><td data-label="Size">3/1 · 1,040 · $889/sqft</td><td data-label="Notes">This house, pre-remodel</td></tr></tbody>
+</table>
+</div>
+<p>Market context: HomeFinder showed a Long Beach median list of $719,500, median list $621/sqft, median sold $850,000, and 61 days on market, and a Los Altos South median listing of $1,381,500. The closest like-kind sales found are remodeled ~2,000 sqft LSF homes from mid-2025: 6320 E Los Santos at $1,412,000 ($694/sqft) and 1811 Tevis at about $1.40 million on 2,018 sqft. The current ask is higher in dollars and, on the listed 2,015 sqft, higher per foot than 6320 E Los Santos. If living area is closer to the permitted 1,698 sqft, the ask looks even richer at about $880/sqft. Unremodeled Carfax sales in the $880,000–$1,105,000 range show what the street’s original 1,100 sqft houses actually bring; this flip is asking $390,000 or more above those, which is the point of the addition, but the market has already cut $105,000 and still has not taken it in 62 days.</p>
+</section>
+<section class="section" id="schools">
+<h2>Schools, walkability, commute</h2>
+<p>Assigned schools are from the listing (Minnie Gant, Stanford, Wilson, Long Beach Unified) and should be verified with LBUSD. Ratings are GreatSchools, 2026.</p>
+<div class="table-wrap">
+<table class="cards">
+<thead><tr><th>School</th><th>Grades</th><th>GreatSchools</th><th>Distance</th></tr></thead>
+<tbody>
+<tr><td data-label="School">Gant Elementary, 1854 N Britton Dr</td><td data-label="Grades">K–5, 657 students</td><td data-label="GreatSchools" class="num">9/10</td><td data-label="Distance" class="num">0.55 mi</td></tr><tr><td data-label="School">Stanford Middle, 5871 E Los Arcos St</td><td data-label="Grades">6–8</td><td data-label="GreatSchools" class="num">7/10</td><td data-label="Distance" class="num">0.71 mi</td></tr><tr><td data-label="School">Wilson High, 4400 E 10th St</td><td data-label="Grades">9–12</td><td data-label="GreatSchools" class="num">6/10</td><td data-label="Distance" class="num">2.03 mi</td></tr></tbody>
+</table>
+</div>
+<p>Distances are Census-geocoder point-to-campus. Gant is 9/10, top 16% in California on the 2026 GreatSchools rating, with a 10/10 test-score rating (78% math and 83% English proficient versus state averages of 37% and 49%). That school is a real part of the value, but enrollment should still be confirmed with the district.</p>
+<dl class="props">
+<dt>Walk Score</dt><dd>65 out of 100, Somewhat Walkable. <a href="https://www.walkscore.com/score/2001-carfax-ave-long-beach-ca-90815">https://www.walkscore.com/score/2001-carfax-ave-long-beach-ca-90815</a></dd>
+<dt>Transit Score</dt><dd>38 out of 100</dd>
+<dt>Bike Score</dt><dd>63 out of 100</dd>
+<dt>Commute</dt><dd>Los Altos/South of Fwy, with 405 access nearby. Drive times were not independently timed. Long Beach Airport is about 2.6 miles away.</dd>
+</dl>
+</section>
+<section class="section" id="verdict">
+<h2>Red flags, questions, and verdict</h2>
+<div class="proscons">
+<div class="pros"><h3>What works</h3><ul><li>A closed city addition permit exists, finaled Sep 30, 2026, covering kitchen, family room, baths, laundry, and HVAC.</li>
+<li>The listing offers a C of O and termite completion as supplements, and systems (panel, plumbing, heat pump) are described as new.</li>
+<li>Corner lot in Los Altos South of Fwy, no HOA, two-car garage, and a walk to Gant Elementary (GreatSchools 9/10).</li>
+<li>Violent-crime grades for Los Altos are strong relative to Long Beach, and official LBPD records show no incidents on the 2000 block of Carfax in either of the last two 12-month open-data windows. The main nearby pattern is vehicle and vehicle-parts theft, which rose in this half-mile even as citywide vehicle crime fell. Walk Score 65 is usable.</li>
+<li>The May 2026 purchase at $925,000 looks in line with other unexpanded Carfax sales, so the starting basis was not obviously inflated.</li>
+</ul></div>
+<div class="cons"><h3>What to watch</h3><ul><li>Listed 2,015 sqft versus permitted 658 sf added to a 1,040 sqft house (1,698). Assessor still shows 1,040 / 3 / 1.</li>
+<li>Same-year flip: $925,000 in May, listed at $1,600,000 in September, now $1,495,000, already cut $105,000 and sitting 62 days.</li>
+<li>MLS went live around Sep 20–25, before the posted permit final date of Sep 30.</li>
+<li>The listing agent also represented the May buyer. The contractor’s B license was issued Dec 4, 2025.</li>
+<li>“New roof” sits next to a 2023 reroof permit and no separate 2026 reroof in the official inquiry.</li>
+<li>Parcel is in a liquefaction zone and a Prado Dam inundation area. Pollution burden in this tract is in the 84th percentile.</li>
+<li>At $1,495,000, or $742/sqft on the listed size, it is priced above mid-2025 remodeled ~2,000 sqft LSF comps such as 6320 E Los Santos at $1,412,000 ($694/sqft).</li>
+</ul></div>
+</div>
+<ol class="plain-list">
+<li>Provide the Certificate of Occupancy, finaled plans, and the approved living-area figure. Reconcile 2,015 with the 658 sf addition and the 1,040 assessor baseline.</li>
+<li>Independent measurement or appraisal of livable square footage, and a full inspection of the addition, foundation, grading, and drainage given the liquefaction zone. Ask for the soils report.</li>
+<li>Roof: was there a 2026 reroof, or is the 2023 roof being called new? Get age, layers, and any warranty.</li>
+<li>Permits for the 200-amp panel, sewer and water laterals, and heat pump if they are not fully inside BADD338820.</li>
+<li>Who is the seller? Is Grace Parris or an affiliate the owner? What did the remodel cost, and will the agent-owner relationship be disclosed?</li>
+<li>Current title: clear the 2025 foreclosure-registry / any NOD flag, and confirm no open city holds (none showed on the official holds search).</li>
+<li>Tax estimate at the eventual purchase price, plus the $389 assessment, and when the assessor will pick up the new square footage.</li>
+<li>Visit at rush hour and during LGB flight periods. Confirm Gant / Stanford / Wilson attendance with LBUSD.</li>
+<li>Check the official LBPD crime-incident map again before closing; the open dataset lags about 21 days.</li>
+</ol>
+<p>Verdict: interesting house, aggressive ask, and one square-footage question that has to be answered before the price means anything. The remodel and the closed addition permit are real, Gant Elementary is a genuine plus, and Los Altos is a strong Long Beach neighborhood. But a buyer should not pay $1,495,000, or $742 per listed square foot, until the C of O shows that 2,015 sqft is the city’s number. If livable area is closer to 1,698, the ask is rich against 2025 remodeled comps near $1.40–$1.41 million. Even if 2,015 is later confirmed, the two price cuts and 62 days on market already suggest negotiating room, and a brand-new flip deserves a hard inspection rather than a premium for “turnkey.”</p>
+</section>
+<section class="section" id="sources">
+<h2>Sources</h2>
+<div class="link-cards">
+<a class="link-card" href="https://www.zillow.com/homedetails/2001-Carfax-Ave-Long-Beach-CA-90815/21206502_zpid/"><span class="link-card-title">Zillow listing (Zestimate $1,477,700)</span><span class="link-card-site">Zillow</span></a>
+<a class="link-card" href="https://www.redfin.com/CA/Long-Beach/2001-Carfax-Ave-90815/home/7583319"><span class="link-card-title">Redfin page (still showed the May 2026 pre-remodel sale)</span><span class="link-card-site">Redfin</span></a>
+<a class="link-card" href="https://www.realtor.com/realestateandhomes-detail/2001-Carfax-Ave_Long-Beach_CA_90815_M15933-02272"><span class="link-card-title">Realtor.com (fetch geo-blocked from this environment)</span><span class="link-card-site">Realtor.com</span></a>
+<a class="link-card" href="https://homefinder.com/realestateandhomes-detail/2001-Carfax-Ave_Long-Beach_CA_90815_M15933-02272"><span class="link-card-title">HomeFinder listing, flip history, and tax table</span><span class="link-card-site">HomeFinder</span></a>
+<a class="link-card" href="https://hoffmanmurphy.com/listing/crmls/PW26203992/Long-Beach/2001-Carfax/"><span class="link-card-title">Hoffman Murphy / CRMLS details</span><span class="link-card-site">Hoffman Murphy</span></a>
+<a class="link-card" href="https://www.mybeachteam.com/property-search/detail/10/PW26203992/2001-carfax-long-beach-ca-90815/"><span class="link-card-title">MyBeachTeam listing and price cuts</span><span class="link-card-site">MyBeachTeam</span></a>
+<a class="link-card" href="https://www.willisallen.com/realestate/details/111471498/2001-carfax-avenue-long-beach-ca-90815"><span class="link-card-title">Willis Allen listing history, including Sep 20 MLS add</span><span class="link-card-site">Willis Allen</span></a>
+<a class="link-card" href="https://www.longbeach.gov/lbcd/building/permit-center/status-inquiry/"><span class="link-card-title">Long Beach Permit Status Inquiry</span><span class="link-card-site">City of Long Beach</span></a>
+<a class="link-card" href="https://rose.longbeach.gov/HPLandMgmt/PB/SitusInquiry.asp?AddNumber=2001&amp;StreetName=Carfax"><span class="link-card-title">Official Situs Inquiry for 2001 Carfax</span><span class="link-card-site">City of Long Beach</span></a>
+<a class="link-card" href="https://portal.assessor.lacounty.gov/"><span class="link-card-title">LA County Assessor portal (AIN 7231003020)</span><span class="link-card-site">LA County Assessor</span></a>
+<a class="link-card" href="https://cslb.ca.gov/OnlineServices/CHECKLICENSEII/CheckLicense.aspx"><span class="link-card-title">CSLB license lookup</span><span class="link-card-site">CSLB</span></a>
+<a class="link-card" href="https://data.ca.gov/@california-office-of-environmental-health-hazard-assessment/calenviroscreen-4-0"><span class="link-card-title">CalEnviroScreen 4.0 results</span><span class="link-card-site">OEHHA / data.ca.gov</span></a>
+<a class="link-card" href="https://crimegrade.org/violent-crime-los-altos-long-beach-ca/"><span class="link-card-title">CrimeGrade Los Altos, Long Beach</span><span class="link-card-site">CrimeGrade</span></a>
+<a class="link-card" href="https://data.longbeach.gov/explore/dataset/lbpd-criminal-incident-data/information/"><span class="link-card-title">LBPD Criminal Incident Data (open data, used for 12-month counts)</span><span class="link-card-site">DataLB</span></a>
+<a class="link-card" href="https://longbeach.gov/police/crime-info/crime-incidents/"><span class="link-card-title">LBPD Crime Incident Mapping Application</span><span class="link-card-site">LBPD</span></a>
+<a class="link-card" href="https://experience.arcgis.com/experience/4edf8be3d86a4d35bd20f17735441038"><span class="link-card-title">LBPD crime incidents map (ArcGIS Experience)</span><span class="link-card-site">LBPD / ArcGIS</span></a>
+<a class="link-card" href="https://www.longbeach.gov/police/crime-info/crime-statistics/"><span class="link-card-title">Long Beach PD crime statistics / dashboard</span><span class="link-card-site">LBPD</span></a>
+<a class="link-card" href="https://www.longbeach.gov/police/press-releases/lbpd-launches-new-interactive-crime-dashboard/"><span class="link-card-title">LBPD Crime Dashboard launch (21-day reporting delay)</span><span class="link-card-site">City of Long Beach</span></a>
+<a class="link-card" href="https://www.walkscore.com/score/2001-carfax-ave-long-beach-ca-90815"><span class="link-card-title">Walk Score for this address</span><span class="link-card-site">Walk Score</span></a>
+<a class="link-card" href="https://www.greatschools.org/california/long-beach/2560-Gant-Elementary-School/"><span class="link-card-title">Gant Elementary, GreatSchools 9/10</span><span class="link-card-site">GreatSchools</span></a>
+<a class="link-card" href="https://www.greatschools.org/california/long-beach/2604-Stanford-Middle-School/"><span class="link-card-title">Stanford Middle, GreatSchools 7/10</span><span class="link-card-site">GreatSchools</span></a>
+<a class="link-card" href="https://www.greatschools.org/california/long-beach/2615-Wilson-High-School/"><span class="link-card-title">Wilson High, GreatSchools 6/10</span><span class="link-card-site">GreatSchools</span></a>
+<a class="link-card" href="https://www.southbayresidential.com/property-search/detail/10/PW25121473/6320-e-los-santos-drive-long-beach-ca-90815/"><span class="link-card-title">6320 E Los Santos Dr, sold Jul 2025</span><span class="link-card-site">South Bay Residential</span></a>
+<a class="link-card" href="https://remaxgold.com/property/25-PW25068970-1811-Tevis-Avenue-Long-Beach-CA-90815/"><span class="link-card-title">1811 Tevis Ave, sold Jun 2025</span><span class="link-card-site">RE/MAX Gold</span></a>
+<a class="link-card" href="https://longbeach.gov/lgb/community-information/noise-abatement"><span class="link-card-title">Long Beach Airport noise abatement</span><span class="link-card-site">LGB</span></a>
+<a class="link-card" href="https://msc.fema.gov/portal/search"><span class="link-card-title">FEMA Flood Map Service Center</span><span class="link-card-site">FEMA</span></a>
+<a class="link-card" href="https://geotracker.waterboards.ca.gov/"><span class="link-card-title">GeoTracker (run this address)</span><span class="link-card-site">State Water Board</span></a>
+<a class="link-card" href="https://www.envirostor.dtsc.ca.gov/public/"><span class="link-card-title">EnviroStor (run this address)</span><span class="link-card-site">DTSC</span></a>
+</div>
+<p>Realtor.com was geo-blocked. Redfin’s subject page appeared stale on the May 2026 sale. Official C of O images from Laserfiche/citydocs, a parcel-level FEMA map, and EnviroStor/GeoTracker radius results were not captured. Figures were gathered Nov 22, 2026, Pacific Time, and can change with a new price cut, a pending, or an updated tax roll.</p>
+</section>
+
+      <footer class="criteria">
+        <p class="colophon"><a href="./index.html">Back to weekly digest</a></p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

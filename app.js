@@ -165,6 +165,23 @@
   head.appendChild(el("p", "prepared", data.prepared));
   wrap.appendChild(head);
 
+  const reports = el("nav", "nav reports-nav");
+  reports.setAttribute("aria-label", "Reports");
+  const reportList = document.createElement("ul");
+  [
+    ["carfax-deep-dive.html", "2001 Carfax Ave deep dive"],
+    ["crime-comparison.html", "Crime comparison"]
+  ].forEach(function (item) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = item[0];
+    a.textContent = item[1];
+    li.appendChild(a);
+    reportList.appendChild(li);
+  });
+  reports.appendChild(reportList);
+  wrap.appendChild(reports);
+
   const nav = el("nav", "nav");
   nav.setAttribute("aria-label", "Sections");
   const navList = document.createElement("ul");
