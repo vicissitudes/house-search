@@ -53,3 +53,4 @@ The tab label is `weekLabel`. Tabs are ordered newest first. `#YYYY-MM-DD` opens
 ## What’s on each week
 
 Top 10 with weighted scores (interior 35%, space 25%, commute 20%, school 20%) and the gated-HOA penalty, the status callout, other qualifying homes with an area filter, an ADU column, and a score, new listings, price changes and corrections, near-misses, open questions, the school caveat, and the buyer criteria.
+
