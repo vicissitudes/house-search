@@ -3,7 +3,8 @@
    Do not edit or remove older dates, and do not edit older week files.
 */
 window.HOUSE_MANIFEST = [
-  "2026-11-21"
+  "2026-11-21",
+  "2026-11-28"
 ];
 
 window.HOUSE_MANIFEST.forEach(function (id) {
